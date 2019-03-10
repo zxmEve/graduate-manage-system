@@ -1,15 +1,17 @@
 package com.zxm.graduatemanagesystem.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.dao.mapper.ArticleInfoMapper;
 import com.zxm.graduatemanagesystem.model.ArticleInfo;
 import com.zxm.graduatemanagesystem.service.IArticleInfoService;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 2019/3/7
@@ -48,6 +50,6 @@ public class ArticleInfoService implements IArticleInfoService {
 
     @Override
     public int deleteArticleInfo(Integer id) {
-        return 0;
+        return articleInfoMapper.deleteByPrimaryKey(id);
     }
 }
