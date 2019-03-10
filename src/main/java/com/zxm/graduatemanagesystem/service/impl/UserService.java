@@ -1,5 +1,8 @@
 package com.zxm.graduatemanagesystem.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.zxm.graduatemanagesystem.dao.UserDao;
 import com.zxm.graduatemanagesystem.dao.mapper.UserMapper;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IUserService;
@@ -14,10 +17,12 @@ import java.util.List;
  * Description:
  */
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserService implements IUserService {
 
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private UserDao userDao;
 
     @Override
     public List<User> getUserList() {
@@ -37,6 +42,22 @@ public class UserServiceImpl implements IUserService {
     @Override
     public int updateUser(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public PageInfo getUserList(int pageNum, int pageSize) {
+        List<User> list = userMapper.selectByExample(null);
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo getUserListByType(int pageNum, int pageSize, Byte type) {
+        List<User> list = userDao.getUserListByType(type);
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo pageInfo = new PageInfo<>(list);
+        return pageInfo;
     }
 
 

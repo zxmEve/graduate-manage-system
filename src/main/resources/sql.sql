@@ -30,9 +30,10 @@ CREATE TABLE `company_info` (
   `com_code` varchar(50) DEFAULT NULL COMMENT '组织机构代码',
   `com_addre` varchar(30) DEFAULT NULL,
   `com_note` varchar(100) DEFAULT NULL COMMENT '备注',
-	`com_user_id` int(11) DEFAULT NULL COMMENT '关联user表id',
+  `com_user_id` int(11) DEFAULT NULL COMMENT '关联user表id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 -- Table structure for student_info
@@ -66,3 +67,52 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for article_info
+-- ----------------------------
+DROP TABLE IF EXISTS `article_info`;
+CREATE TABLE `article_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `content` text,
+  `type` tinyint(4) DEFAULT NULL COMMENT '文章类型',
+  `create_time` datetime DEFAULT NULL,
+  `pic_path` varchar(100) DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for recruit_info
+-- ----------------------------
+DROP TABLE IF EXISTS `recruit_info`;
+CREATE TABLE `recruit_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `content` text,
+  `employ_type` tinyint(4) DEFAULT NULL COMMENT '招聘类型（正式、实习）',
+  `create_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for recruit_meeting
+-- ----------------------------
+DROP TABLE IF EXISTS `recruit_meeting`;
+CREATE TABLE `recruit_meeting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `content` text,
+  `address` varchar(50) DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

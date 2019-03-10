@@ -1,5 +1,6 @@
 package com.zxm.graduatemanagesystem.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IUserService;
 import org.springframework.stereotype.Controller;
@@ -40,8 +41,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<User> list(){
-        return userService.getUserList();
+    public PageInfo list(@RequestParam int pageNum,@RequestParam int pageSize){
+        return userService.getUserList(pageNum, pageSize);
     }
 
 

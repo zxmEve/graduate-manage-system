@@ -3,6 +3,7 @@ package com.zxm.graduatemanagesystem.dao.mapper;
 import com.zxm.graduatemanagesystem.model.StudentInfo;
 import com.zxm.graduatemanagesystem.model.StudentInfoCriteria;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface StudentInfoMapper {
@@ -93,4 +94,6 @@ public interface StudentInfoMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(StudentInfo record);
+
+    StudentInfo getStudentByUserId(Integer userId);
 }

@@ -1,5 +1,6 @@
 package com.zxm.graduatemanagesystem.service;
 
+import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.User;
 
 import java.util.List;
@@ -17,5 +18,9 @@ public interface IUserService {
     User selectById(Integer id);
 
     int updateUser(User user);
+
+    PageInfo getUserList(int pageNum, int pageSize);
+
+    PageInfo getUserListByType(int pageNum, int pageSize, Byte type);
 
 }

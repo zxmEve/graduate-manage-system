@@ -347,4 +347,10 @@
       phone = #{phone,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getStudentByUserId" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from student_info
+    where user_id = #{user_id, jdbcType=INTEGER}
+  </select>
 </mapper>
