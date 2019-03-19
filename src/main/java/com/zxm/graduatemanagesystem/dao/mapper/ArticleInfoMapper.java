@@ -118,5 +118,5 @@ public interface ArticleInfoMapper {
      */
     int updateByPrimaryKey(ArticleInfo record);
 
-    List<ArticleInfo> getArticleListByTypeDESC(@Param("type") Integer type);
+    List<ArticleInfo> getArticleListByTypeDESC(Integer type);
 }

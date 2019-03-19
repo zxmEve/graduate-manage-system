@@ -7,6 +7,7 @@ import com.zxm.graduatemanagesystem.dao.mapper.RecruitInfoMapper;
 import com.zxm.graduatemanagesystem.dao.mapper.RecruitMeetingMapper;
 import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.service.IRecruitMeetingService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.List;
  * Create by zhouximin
  * Description:
  */
+@Service
 public class RecruitMeetingService implements IRecruitMeetingService {
     @Resource
     RecruitMeetingMapper recruitMeetingMapper;

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.dao.mapper.StudentInfoMapper;
 import com.zxm.graduatemanagesystem.model.StudentInfo;
 import com.zxm.graduatemanagesystem.service.IStudentService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * Create by zhouximin
  * Description:
  */
+@Service
 public class StudentService implements IStudentService {
 
     @Resource

@@ -253,7 +253,7 @@
       user_type = #{userType,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="login" parameterType="map">
+  <select id="login" parameterType="map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from user

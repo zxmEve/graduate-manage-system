@@ -22,4 +22,6 @@ public interface IStudentService {
     int deleteStudent(Integer id);
 
     StudentInfo getStudentByUserId(Integer userId);
+
+
 }

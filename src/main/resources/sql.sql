@@ -45,13 +45,23 @@ CREATE TABLE `student_info` (
   `name` varchar(50) DEFAULT NULL,
   `id_num` varchar(20) DEFAULT NULL COMMENT '身份证',
   `gender` tinyint(2) DEFAULT NULL,
-  `nation` varchar(255)  DEFAULT NULL COMMENT '民族',
+  `nation` varchar(255) DEFAULT NULL COMMENT '民族',
   `institude` tinyint(255) DEFAULT NULL COMMENT '学院',
   `profession` tinyint(255) DEFAULT NULL COMMENT '专业',
   `education` tinyint(255) DEFAULT NULL COMMENT '学历（0:本科 1:研究生）',
   `phone` varchar(20) DEFAULT NULL,
+  `student_class` varchar(20) DEFAULT NULL COMMENT '班级',
+  `student_id` varchar(30) DEFAULT NULL COMMENT '学号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student_info
+-- ----------------------------
+BEGIN;
+INSERT INTO `student_info` VALUES (1, 2, '十大', '2222222', 1, '222', 11, 22, 22, '2222222', '22221122', '232323232');
+INSERT INTO `student_info` VALUES (2, 3, '十大撒大声地', '2222222', 1, '333', 33, 33, 22, '2222222', '22221122', '232323232');
+COMMIT;
 
 
 -- ----------------------------
