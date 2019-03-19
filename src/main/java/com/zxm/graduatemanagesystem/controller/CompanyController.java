@@ -3,6 +3,7 @@ package com.zxm.graduatemanagesystem.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,4 +53,10 @@ public class CompanyController {
         return companyService.getCompanyByUserId(userId);
     }
 
+    @RequestMapping("/toCompanyTable")
+    public String toTablePage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+        PageInfo pageInfo = companyService.getCompanyList(pageNum,pageSize);
+        model.addAttribute("pageInfo",pageInfo);
+        return "company_table";
+    }
 }

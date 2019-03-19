@@ -1,8 +1,6 @@
 package com.zxm.graduatemanagesystem.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.zxm.graduatemanagesystem.constants.StudentColumns;
-import com.zxm.graduatemanagesystem.dto.EnumDTO;
 import com.zxm.graduatemanagesystem.model.StudentInfo;
 import com.zxm.graduatemanagesystem.service.IDictionaryService;
 import com.zxm.graduatemanagesystem.service.impl.StudentService;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author tangmingqiu
@@ -62,10 +59,8 @@ public class StudentController {
     @RequestMapping("/toStudentTable")
     public String toTablePage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
         PageInfo pageInfo = studentService.getStudentList(pageNum,pageSize);
-//        List<EnumDTO> list = dictionaryService.getDictionary(StudentColumns.values());
-//        model.addAttribute("tableHeaders",list);
         model.addAttribute("pageInfo",pageInfo);
-        return "table";
+        return "student_table";
     }
 
 
