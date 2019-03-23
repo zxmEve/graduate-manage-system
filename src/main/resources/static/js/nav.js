@@ -12,7 +12,7 @@ $(document).ready(function(e) {
 	});
 	
 	$(".sidebar-hide").click(function(){
-		$(".sidebar").hide();
+		// $(".sidebar").hide();
 		$("#bd").css("padding-left","0");
 		$(".sidebar-show").show();
 		$.each($('iframe'), function(){
@@ -25,7 +25,7 @@ $(document).ready(function(e) {
 	$(".sidebar-show").click(function(){
 		$(".sidebar").show();
 		$("#bd").css("padding-left","203px");
-		$(this).hide();
+		// $(this).hide();
 		$.each($('iframe'), function(){
 			if($(this)[0].contentWindow.resizeWidth){
 				$(this)[0].contentWindow.resizeWidth();	

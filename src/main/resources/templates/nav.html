@@ -27,29 +27,29 @@
                         <li class="subnav-li" href="table.html" data-id="3"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">管理员信息管理</span></a></li>
                     </ul>
                 </li>
-                <li class="nav-li">
-                	<a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">文章管理</span></a>
-                    <!--<ul class="subnav">-->
-                    	<!--<li class="subnav-li" href="/user/toIndex" data-id="8"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">新闻视频管理</span></a></li>-->
-                        <!--<li class="subnav-li" href="form.html" data-id="9"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">新闻频道管理</span></a></li>-->
+                <li class="nav-li" data-id="8" href="/student/toStudentTable">
+                	<a href="javascript:" class="ue-clear"><i class="nav-ivon" ></i><span class="nav-text">文章管理</span></a>
+                    <ul class="subnav">
+                    	<li class="subnav-li" href="/user/toIndex" data-id="8"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">文章列表</span></a></li>
+                        <li class="subnav-li" href="form.html" data-id="9"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">发布文章</span></a></li>
                         <!--<li class="subnav-li" href="student_table.html" data-id="10"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">地方新闻管理</span></a></li>-->
                         <!--<li class="subnav-li" data-id="11"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">自定义设置1</span></a></li>-->
-                    <!--</ul>-->
+                    </ul>
                 </li>
                 <li class="nav-li">
-                	<a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">宣讲会管理</span></a>
-                    <!--<ul class="subnav">-->
-                    	<!--<li class="subnav-li" data-id="5"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">工作安排查询1</span></a></li>-->
-                        <!--<li class="subnav-li" data-id="6"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">安排管理1</span></a></li>-->
+                	<a class="ue-clear"><i class="nav-ivon" href="/student/toStudentTable"></i><span class="nav-text">宣讲会管理</span></a>
+                    <ul class="subnav">
+                    	<li class="subnav-li" data-id="5"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">宣讲会列表</span></a></li>
+                        <li class="subnav-li" data-id="6"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">发布宣讲会</span></a></li>
                         <!--<li class="subnav-li" data-id="7"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">类型选择1</span></a></li>-->
-                    <!--</ul>-->
+                    </ul>
                 </li>
                 <li class="nav-li last-nav-li">
-                	<a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">数据管理</span></a>
+                	<a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">招聘信息管理</span></a>
                     <ul class="subnav">
-                    	<li class="subnav-li" data-id="12"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">工作安排查询2</span></a></li>
-                        <li class="subnav-li" data-id="13"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">安排管理2</span></a></li>
-                        <li class="subnav-li" data-id="14"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">类型选择2</span></a></li>
+                    	<li class="subnav-li" data-id="12"><a href="javascript:" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">招聘信息列表</span></a></li>
+                        <li class="subnav-li" data-id="13"><a href="javascript:" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">发布招聘信息</span></a></li>
+                        <!--<li class="subnav-li" data-id="14"><a href="javascript:" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">类型选择2</span></a></li>-->
                     </ul>
                 </li>
             </ul>
@@ -93,32 +93,26 @@
 	var setting = {};
 
 		var zNodes =[
-			{ name:"新闻管理",
+			{ name:"用户信息管理",
 			   children: [
-				 { name:"新闻视频管理",icon:'/img/skin_/leftlist.png'},
-				 { name:"新闻频道管理",icon:'/img/skin_/leftlist.png'},
-				 { name:"地方新闻管理",icon:'/img/skin_/leftlist.png'}
+				 { name:"学生信息管理",icon:'/img/skin_/leftlist.png'},
+				 { name:"企业信息管理",icon:'/img/skin_/leftlist.png'},
+				 { name:"管理员信息管理",icon:'/img/skin_/leftlist.png'}
 			]},
-			{ name:"用户信息设置", open:true,
+			{ name:"文章管理", open:true,
 			   children: [
-				 { name:"首页", checked:true,icon:'/img/skin_/leftlist.png'},
-				 { name:"表单",icon:'/img/skin_/leftlist.png'},
-				 { name:"表格",icon:'/img/skin_/leftlist.png'},
-				 { name:"自定义设置",icon:'/img/skin_/leftlist.png'}
+				 { name:"文章列表", checked:true,icon:'/img/skin_/leftlist.png'},
+				 { name:"发布文章",icon:'/img/skin_/leftlist.png'}
 			]},
-			{ name:"工作安排",
+			{ name:"宣讲会管理",
 			   children: [
-				 { name:"工作安排",icon:'/img/skin_/leftlist.png'},
-				 { name:"安排管理",icon:'/img/skin_/leftlist.png'},
-				 { name:"类型选择",icon:'/img/skin_/leftlist.png'},
-				 { name:"自定义设置",icon:'/img/skin_/leftlist.png'}
+				 { name:"宣讲会列表",icon:'/img/skin_/leftlist.png'},
+				 { name:"发布宣讲会",icon:'/img/skin_/leftlist.png'}
 			]},
-			{ name:"数据管理",
+			{ name:"招聘信息管理",
 			   children: [
-				 { name:"工作安排",icon:'/img/skin_/leftlist.png'},
-				 { name:"安排管理",icon:'/img/skin_/leftlist.png'},
-				 { name:"类型选择",icon:'/img/skin_/leftlist.png'},
-				 { name:"自定义设置",icon:'/img/skin_/leftlist.png'}
+				 { name:"招聘信息列表",icon:'/img/skin_/leftlist.png'},
+				 { name:"发布招聘信息",icon:'/img/skin_/leftlist.png'}
 			]}
 		];
 
