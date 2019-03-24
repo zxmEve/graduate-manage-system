@@ -7,7 +7,9 @@
 <link rel="stylesheet" type="text/css" href="/css/WdatePicker.css" />
 <link rel="stylesheet" type="text/css" href="/css/skin_/table.css" />
 <link rel="stylesheet" type="text/css" href="/css/jquery.grid.css" />
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/css/jqueryui-style.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <title>表格</title>
 </head>
@@ -103,12 +105,12 @@
                             <i class="icon"></i>
                             <span class="text">删除</span>
                         </a>
-                        
+
                         <a href="javascript:;" class="statistics">
                             <i class="icon"></i>
                             <span class="text">统计</span>
                         </a>
-                        
+
                         <a href="javascript:;" class="config">
                             <i class="icon"></i>
                             <span class="text">配置</span>
@@ -144,6 +146,33 @@
                         </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div id="dialog-form" title="添加" style="display:none">
+                    <p class="validateTips">所有的表单字段都是必填的。</p>
+
+                    <form id="dialogForm">
+                        <fieldset>
+                            <label for="name">登录用户名</label>
+                            <input type="text" name="userId" id="userId" class="text ui-widget-content ui-corner-all">
+                            <label for="password">登录密码</label>
+                            <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">
+                            <label for="name">姓名</label>
+                            <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+                            <label for="studentId">学号</label>
+                            <input type="text" name="studentId" id="studentId" value="" class="text ui-widget-content ui-corner-all">
+                            <label for="xueyuan">学院</label>
+                            <input type="text" name="xueyuan" id="xueyuan" value="" class="text ui-widget-content ui-corner-all">
+                            <label for="zhuanye">专业</label>
+                            <input type="text" name="zhuanye" id="zhuanye" value="" class="text ui-widget-content ui-corner-all">
+                            <label for="banji">班级</label>
+                            <input type="text" name="banji" id="banji" value="" class="text ui-widget-content ui-corner-all">
+                            <label for="xingbie">性别</label>
+                            <input type="text" name="xingbie" id="xingbie" value="" class="text ui-widget-content ui-corner-all">
+                            <label for="phone">电话</label>
+                            <input type="text" name="phone" id="phone" value="" class="text ui-widget-content ui-corner-all">
+                        </fieldset>
+                    </form>
                 </div>
                 
 
@@ -193,98 +222,49 @@
 <script type="text/javascript" src="/js/jquery.pagination.js"></script>
 <script type="text/javascript" src="/js/jquery.grid.js"></script>
 <script type="text/javascript" src="/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
 <script type="text/javascript">
-	$('select').select();
-	var head = [{
-				label: 'ID',
-				width: 100,
-				sortable: 'default',
-				name: 'id'	
-			},{
-				label:'用户名',
-				width: 150,
-				sortable: 'default',
-				name:'name'	
-			},{
-				label:'昵称',
-				width:150	
-			},{
-				label: '籍贯',
-				width: 150	
-			},{
-				label: '毕业院校',
-				minWidth: 200	
-			},{
-				label: '出生日期',
-				width: 120	
-			},{
-				label: '是否审核',
-				width:100	
-			}];
-			
-	var oper = [{label:'删除',onclick:function(){
-						alert('删除');
-				}},{label:'编辑',onclick: function(){
-					alert('编辑')	
-				}}]
-	var tbody = [
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper], 
-					["201302","uimaker","小牛","山东济南","山东大学","1989-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper], 
-					["201302","uimaker","小牛","山东济南","山东大学","1989-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper], 
-					["201302","uimaker","小牛","山东济南","山东大学","1989-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper], 
-					["201302","uimaker","小牛","山东济南","山东大学","1989-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper], 
-					["201302","uimaker","小牛","山东济南","山东大学","1989-10-18","已审核",oper],
-					["201301","admin","熊猫王子","江苏南京","南京林业大学","1982-10-18","已审核",oper]]
-					
-					
-		// $('.grid').Grid({
-		// 	thead: head,
-		// 	tbody: null,
-		// 	height:400,
-		// 	checkbox: {
-		// 		single:true
-		// 	},
-		// 	operator: {
-		// 		type : "normal",
-		// 		width : 100
-		// 	},
-		// 	sortCallBack : function(name,index,type){
-		// 		alert(name+","+index+','+type);
-		// 	}
-		//
-		// });
-	
-	// $('.grid').Grid('addLoading');
-	
-	/// 模拟异步
-	// setTimeout(function(){
-	// 	$('.grid').Grid('setData',tbody, head);
-	// },2000)
-	
-	
-	// $('.pagination').pagination(100,{
-	// 	callback: function(page){
-	// 		alert(page);
-	// 	},
-	// 	display_msg: false
-	// });
-	
-	$('.search-box input[type=radio]').click(function(e) {
-        if($(this).prop('checked')){
-			if($(this).attr('data-define') === 'define'){
-				$('.define-input').show();
-			}else{
-				$('.define-input').hide();
-			}
-		}
+
+    $(function() {
+
+        $(".add").click(function() {
+            $( "#dialog-form" ).dialog( "open" );
+        });
+
+        $( "#dialog-form" ).dialog({
+            autoOpen: false,
+            height: 500,
+            width: 300,
+            modal: true,
+            buttons: {
+                "添加": function() {
+                    allFields.removeClass( "ui-state-error" );
+                    var form = $("#dialogForm");
+                    $.ajax({
+                        url: "/user/insert",
+                        data: form.serialize(),
+                        dataType:"json",
+                        type:"POST",
+                        success:function(data){
+                            $("#dialog").dialog("close");
+                            alert("成功啦");
+                        },
+                        error:function(){
+                            $("#dialog").dialog("close");
+                            alert("出错了哦");
+                        }
+                    })
+                    $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            },
+            close: function() {
+                allFields.val( "" ).removeClass( "ui-state-error" );
+            }
+        });
     });
+
 </script>
 </html>

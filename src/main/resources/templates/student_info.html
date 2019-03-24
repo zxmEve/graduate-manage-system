@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="/css/skin_/table.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.grid.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jqueryui-style.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>表格</title>
+</head>
+
+<body>
+<div id="container">
+    <div id="bd">
+        <div id="main">
+            <div class="login-box">
+                <div id="logo"></div>
+                <h1></h1>
+                <form id="loginForm" name="loginForm">
+                    <div class="input" id="id" >
+                        <input type="hidden" id="id" name="id" th:value="${stu?.id}"/>
+                    </div>
+                    <div class="input" id="userId" >
+                        <input type="hidden" id="userId" name="userId" th:value="${stu?.userId}"/>
+                    </div>
+                    <div class="input name" id="name" >
+                        <label for="name">姓名</label>
+                        <span></span>
+                        <input type="text" id="name" name="name" th:value="${stu?.name}"/>
+                    </div>
+                    <div class="input" id="idNum">
+                        <label for="idNum">身份证</label>
+                        <span></span>
+                        <input type="text" id="idNum" name="idNum" th:value="${stu?.idNum}"/>
+                    </div>
+                    <div class="input" id="gender">
+                        <label for="gender">性别</label>
+                        <select name = "gender"">
+                            <option value ="1" th:selected="${stu?.gender == '1'}">男</option>
+                            <option value ="0" th:selected="${stu?.gender == '0'}">女</option>
+                        </select>
+                    </div>
+
+                    <div class="input" id="nation">
+                        <label for="nation">民族</label>
+                        <span></span>
+                        <input type="text" id="nation" name="nation" th:value="${stu?.nation}"/>
+                    </div>
+                    <div class="input" id="institude">
+                        <label for="institude">学院</label>
+                        <span></span>
+                        <input type="text" id="institude" name="institude" th:value="${stu?.institude}"/>
+                    </div>
+                    <div class="input" id="profession">
+                        <label for="profession">专业</label>
+                        <span></span>
+                        <input type="text" id="profession" name="profession" th:value="${stu?.profession}"/>
+                    </div>
+                    <div class="input" id="education">
+                        <label for="education">学历</label>
+                        <select name = "education">
+                            <option value ="1" th:selected="${stu?.education == '1'}">研究生</option>
+                            <option value ="0" th:selected="${stu?.education == '0'}">本科</option>
+                        </select>
+                    </div>
+                    <div class="input" id="phone">
+                        <label for="phone">电话</label>
+                        <span></span>
+                        <input type="text" id="phone" name="phone" th:value="${stu?.phone}"/>
+                    </div>
+                    <div class="input" id="studentClass">
+                        <label for="studentClass">班级</label>
+                        <span></span>
+                        <input type="text" id="studentClass" name="studentClass" th:value="${stu?.studentClass}"/>
+                    </div>
+                    <div class="input" id="studentId">
+                        <label for="studentId">学号</label>
+                        <span></span>
+                        <input type="text" id="studentId" name="studentId" th:value="${stu?.studentId}"/>
+                    </div>
+
+                    <div id="btn" class="submitBtn">
+                        <input type="button" class="button" value="修改"  />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div id="ft"></div>
+    </div>
+
+</div>
+
+</body>
+
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+<script type="text/javascript" src="/js/jquery.select.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
+<script type="text/javascript" src="/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="/js/jquery.grid.js"></script>
+<script type="text/javascript" src="/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script>
+
+    $('.submitBtn').on('click',function(){
+        $.ajax({
+            url: "/student/update_or_insert",
+            type: "POST",
+            data: JSON.stringify($('form').serializeObject()),
+            contentType:"application/json",
+            success:function(){
+                alert("修改成功");
+                location.reload();
+            }
+        });
+    });
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+
+</script>
+</html>

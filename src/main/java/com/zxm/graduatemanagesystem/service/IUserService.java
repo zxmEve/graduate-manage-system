@@ -1,9 +1,9 @@
 package com.zxm.graduatemanagesystem.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.User;
-
-import java.util.List;
 
 /**
  * 2019/3/5
@@ -22,5 +22,7 @@ public interface IUserService {
     PageInfo getUserList(int pageNum, int pageSize);
 
     PageInfo getUserListByType(int pageNum, int pageSize, Byte type);
+
+    int insertUser(User user);
 
 }
