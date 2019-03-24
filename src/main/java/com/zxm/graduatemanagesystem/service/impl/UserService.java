@@ -1,15 +1,17 @@
 package com.zxm.graduatemanagesystem.service.impl;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.dao.UserDao;
 import com.zxm.graduatemanagesystem.dao.mapper.UserMapper;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IUserService;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 2019/3/5
@@ -42,6 +44,11 @@ public class UserService implements IUserService {
     @Override
     public int updateUser(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public int insertUser(User user) {
+        return userMapper.insert(user);
     }
 
     @Override

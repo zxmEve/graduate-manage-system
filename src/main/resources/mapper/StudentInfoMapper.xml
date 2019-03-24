@@ -378,7 +378,7 @@
       student_id = #{studentId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getStudentByUserId" parameterType="java.lang.Integer">
+  <select id="getStudentByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from student_info
