@@ -3,6 +3,7 @@ package com.zxm.graduatemanagesystem.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,5 +47,12 @@ public class RecruitMeetinController {
     public boolean delete(@RequestParam int meetingId){
         int ret = recruitMeetingService.deleteRecruitMeeting(meetingId);
         return ret > 0;
+    }
+
+    @RequestMapping(value = "/detail",method = RequestMethod.GET)
+    public String detail(Model model, @RequestParam Integer id){
+        RecruitMeeting recruitMeeting = recruitMeetingService.getDetailById(id);
+        model.addAttribute("info",recruitMeeting);
+        return "/front/recruit_meeting";
     }
 }

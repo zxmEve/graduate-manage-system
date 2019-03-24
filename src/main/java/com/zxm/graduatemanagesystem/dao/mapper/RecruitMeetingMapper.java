@@ -3,6 +3,8 @@ package com.zxm.graduatemanagesystem.dao.mapper;
 import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.model.RecruitMeetingCriteria;
 import java.util.List;
+
+import com.zxm.graduatemanagesystem.vo.front.RecruitMeetingVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface RecruitMeetingMapper {
@@ -118,5 +120,5 @@ public interface RecruitMeetingMapper {
      */
     int updateByPrimaryKey(RecruitMeeting record);
 
-    List<RecruitMeeting> getMeetingOrderByStartTime();
+    List<RecruitMeetingVO> getMeetingOrderByStartTime();
 }

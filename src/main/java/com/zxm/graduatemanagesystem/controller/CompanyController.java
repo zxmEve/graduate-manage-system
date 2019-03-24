@@ -57,6 +57,6 @@ public class CompanyController {
     public String toTablePage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
         PageInfo pageInfo = companyService.getCompanyList(pageNum,pageSize);
         model.addAttribute("pageInfo",pageInfo);
-        return "company_table";
+        return "/admin/company_table";
     }
 }

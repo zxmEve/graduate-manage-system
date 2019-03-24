@@ -60,7 +60,7 @@ public class StudentController {
     public String toTablePage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
         PageInfo pageInfo = studentService.getStudentList(pageNum,pageSize);
         model.addAttribute("pageInfo",pageInfo);
-        return "student_table";
+        return "/admin/student_table";
     }
 
 

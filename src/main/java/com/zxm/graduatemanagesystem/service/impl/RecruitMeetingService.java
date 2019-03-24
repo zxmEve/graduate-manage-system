@@ -7,9 +7,13 @@ import com.zxm.graduatemanagesystem.dao.mapper.RecruitInfoMapper;
 import com.zxm.graduatemanagesystem.dao.mapper.RecruitMeetingMapper;
 import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.service.IRecruitMeetingService;
+import com.zxm.graduatemanagesystem.util.DateUtil;
+import com.zxm.graduatemanagesystem.vo.front.RecruitMeetingVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -42,13 +46,25 @@ public class RecruitMeetingService implements IRecruitMeetingService {
     @Override
     public PageInfo getRecruitMeetingListByTypeDESC(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        List<RecruitMeeting> list = recruitMeetingMapper.getMeetingOrderByStartTime();
+        List<RecruitMeetingVO> list = recruitMeetingMapper.getMeetingOrderByStartTime();
+//        list.forEach(recruitMeetingVO -> {
+//
+//        });
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
+
+
 
     @Override
     public int deleteRecruitMeeting(Integer id) {
         return recruitMeetingMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public RecruitMeeting getDetailById(Integer id) {
+        RecruitMeeting recruitMeeting = recruitMeetingMapper.selectByPrimaryKey(id);
+        return recruitMeeting;
+    }
+
 }

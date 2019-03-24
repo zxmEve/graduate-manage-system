@@ -398,7 +398,16 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getMeetingOrderByStartTime">
+
+  <resultMap id="RecruitMeetingVO" type="com.zxm.graduatemanagesystem.vo.front.RecruitMeetingVO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="getMeetingOrderByStartTime" resultMap="RecruitMeetingVO">
     select
     id, title, address, start_time, end_time
     from recruit_meeting

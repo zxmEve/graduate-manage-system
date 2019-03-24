@@ -20,4 +20,6 @@ public interface IRecruitMeetingService {
     PageInfo getRecruitMeetingListByTypeDESC(int pageNum, int pageSize);
 
     int deleteRecruitMeeting(Integer id);
+
+    RecruitMeeting getDetailById(Integer id);
 }

@@ -5,9 +5,7 @@ import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IStudentService;
 import com.zxm.graduatemanagesystem.service.IUserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -41,10 +39,10 @@ public class UserController {
             if (u != null) {
                 //登陆的用户放进session
                 request.getSession().setAttribute("loginUser", u);
-                page = "main";
+                page = "/admin/main";
             }
             else {
-                page = "login";
+                page = "/admin/login";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,21 +58,21 @@ public class UserController {
 //    }
     @RequestMapping("/toLogin")
     public String toLoginPage()	{
-        return "login";
+        return "/admin/login";
     }
 
     @RequestMapping("/toNav")
     public String toNavPage(){
-        return "nav";
+        return "/admin/nav";
     }
 
     @RequestMapping("/toForm")
     public String toFormPage(){
-        return "form";
+        return "/admin/form";
     }
     @RequestMapping("/toIndex")
     public String toIndexPage(){
-        return "index";
+        return "/admin/index";
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
