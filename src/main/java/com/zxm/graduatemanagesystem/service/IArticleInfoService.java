@@ -21,5 +21,7 @@ public interface IArticleInfoService {
 
     int deleteArticleInfo(Integer id);
 
+    ArticleInfo getDetailById(Integer id);
+
 
 }

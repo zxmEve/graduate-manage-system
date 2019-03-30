@@ -1,6 +1,9 @@
 package com.zxm.graduatemanagesystem.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
+import com.zxm.graduatemanagesystem.service.IArticleInfoService;
+import com.zxm.graduatemanagesystem.service.IRecruitInfoService;
 import com.zxm.graduatemanagesystem.service.IRecruitMeetingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +22,21 @@ import javax.annotation.Resource;
 public class IndexController {
     @Resource
     private IRecruitMeetingService recruitMeetingService;
+    @Resource
+    private IRecruitInfoService recruitInfoService;
+    @Resource
+    private IArticleInfoService articleInfoService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String toIndex(Model model){
-        PageInfo recruitMeetingPageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(1,8);
+        int pageNum = 1;
+        int pageSize = 8;
+        PageInfo recruitMeetingPageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum, pageSize);
+        PageInfo recruitInfoPageInfo = recruitInfoService.getRecruitInfoListDESC(pageNum, pageSize);
+        PageInfo notice = articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, ArticalTypeEnum.NOTICE.getIntValue());
         model.addAttribute("recruitMeeting", recruitMeetingPageInfo);
+        model.addAttribute("recruitInfo", recruitInfoPageInfo);
+        model.addAttribute("notice",notice);
         return "/front/index";
     }
 }

@@ -4,6 +4,7 @@ import com.zxm.graduatemanagesystem.dao.CompanyInfoDao;
 import com.zxm.graduatemanagesystem.dao.mapper.CompanyInfoMapper;
 import com.zxm.graduatemanagesystem.model.CompanyInfo;
 import com.zxm.graduatemanagesystem.model.CompanyInfoCriteria;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * Create by zhouximin
  * Description:
  */
+@Component
 public class CompanyInfoDaoImpl implements CompanyInfoDao {
     @Resource
     CompanyInfoMapper companyInfoMapper;

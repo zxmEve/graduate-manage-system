@@ -3,6 +3,7 @@ package com.zxm.graduatemanagesystem.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,15 +39,30 @@ public class ArticleInfoController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public PageInfo articleInfoListByTypeDESC(@RequestParam int pageNum,@RequestParam int pageSize,
+    public PageInfo articleInfoListByTypeDESC(@RequestParam int pageNum, @RequestParam int pageSize,
                                               @RequestParam("articleType") int type) {
         return articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, type);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public boolean deleteArticleInfo(@RequestParam("articleId") int articleId) {
-        int ret =  articleInfoService.deleteArticleInfo(articleId);
+        int ret = articleInfoService.deleteArticleInfo(articleId);
         return ret > 0;
+    }
+
+
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public String detail(Model model, @RequestParam Integer id) {
+        ArticleInfo articleInfo = articleInfoService.getDetailById(id);
+        model.addAttribute("info", articleInfo);
+        return "/front/article";
+    }
+
+    @RequestMapping(value = "/toList", method = RequestMethod.GET)
+    public String toListPage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize, @RequestParam int articleType) {
+        PageInfo pageInfo = articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, articleType);
+        model.addAttribute("pageInfo", pageInfo);
+        return "/front/article_list";
     }
 
 }

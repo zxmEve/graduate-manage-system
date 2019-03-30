@@ -3,6 +3,8 @@ package com.zxm.graduatemanagesystem.dao.mapper;
 import com.zxm.graduatemanagesystem.model.RecruitInfo;
 import com.zxm.graduatemanagesystem.model.RecruitInfoCriteria;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface RecruitInfoMapper {
@@ -118,4 +120,5 @@ public interface RecruitInfoMapper {
      */
     int updateByPrimaryKey(RecruitInfo record);
 
+    List<RecruitInfo> getRecruitListDESC(Map paramsMap);
 }

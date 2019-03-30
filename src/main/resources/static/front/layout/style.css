@@ -58,7 +58,7 @@ html, body {height:100%;}
 body {}
 body, a {font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#737373;}
 	
-.wrapper {width:100%; min-width:320px; min-height:100%; overflow-x:hidden; position:relative; background-color:#ffffff;}
+.wrapper {width:100%; min-width:320px; min-height:100%; overflow-x:hidden; position:relative; background-color:#ffffff; overflow-y: hidden;}
 
 .inner {width:960px; margin:0px auto;}
 .fl, .alignleft {float:left;}
@@ -175,6 +175,7 @@ header {}
 .block_top_menu li a {font-size:11px; color:#cccccc;}
 .block_top_menu li a:hover {color:#ffffff; text-decoration:none;}
 .block_top_menu li.current a {color:#ffffff; font-weight:bold;}
+.block_top_menu li.welcome {color:#ffffff;}
 
 .block_social_top {margin-left:54px; padding-top:10px; float:left;}
 .block_social_top li {margin-left:6px; display:block; float:left;}
@@ -277,7 +278,7 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 .responsive_secondary_menu .r_menu > ul > li:first-child {padding-left:0px; background:none;}
 
 .block_clock {padding-left:16px; padding-top:13px; float:right; background:url(/front/layout/images/icon_clock.png) no-repeat 0px 13px;}
-.block_clock p {padding-bottom:0px; font-size:11px; color:#767676; font-weight:bold; line-height:13px;}
+.block_clock p {padding-bottom:0px; font-size:11px; color:#fff; font-weight:bold; line-height:13px;}
 .block_clock p span {color:#000000;}
 
 /* big dropdown */
@@ -3191,7 +3192,7 @@ input.general_button {margin:0px; padding:0px 15px 4px; border:0px; cursor:point
 	
 			#header .section_secondary_menu {overflow:hidden;}
 	
-	.block_clock {display:none;}
+	.block_clock {display:none; float: right;}
 	
 	
 	

@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2019/3/7
@@ -43,9 +45,20 @@ public class RecruitInfoService implements IRecruitInfoService {
     }
 
     @Override
-    public PageInfo getRecruitInfoListDESC(int pageNum, int pageSize, Integer authorId) {
+    public PageInfo getRecruitInfoListByAuthorIdDESC(int pageNum, int pageSize, Integer authorId) {
+        Map map = new HashMap();
+        map.put("authorId", authorId);
         PageHelper.startPage(pageNum,pageSize);
-        List<RecruitInfo> list = recruitInfoDao.getRecruitListByAuthorDESC(authorId);
+        List<RecruitInfo> list = recruitInfoMapper.getRecruitListDESC(map);
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo getRecruitInfoListDESC(int pageNum, int pageSize) {
+        Map map = new HashMap();
+        PageHelper.startPage(pageNum,pageSize);
+        List<RecruitInfo> list = recruitInfoMapper.getRecruitListDESC(map);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
@@ -53,5 +66,11 @@ public class RecruitInfoService implements IRecruitInfoService {
     @Override
     public int deleteRecruitInfo(Integer id) {
         return recruitInfoMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public RecruitInfo getDetailById(Integer id) {
+        RecruitInfo recruitInfo = recruitInfoMapper.selectByPrimaryKey(id);
+        return recruitInfo;
     }
 }

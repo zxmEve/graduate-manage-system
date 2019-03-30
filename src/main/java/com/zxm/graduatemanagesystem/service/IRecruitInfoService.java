@@ -17,7 +17,10 @@ public interface IRecruitInfoService {
 
     int updateRecruitInfo(RecruitInfo recruitInfo);
 
-    PageInfo getRecruitInfoListDESC(int pageNum, int pageSize, Integer authorId);
+    PageInfo getRecruitInfoListByAuthorIdDESC(int pageNum, int pageSize, Integer authorId);
+    PageInfo getRecruitInfoListDESC(int pageNum, int pageSize);
 
     int deleteRecruitInfo(Integer id);
+
+    RecruitInfo getDetailById(Integer id);
 }

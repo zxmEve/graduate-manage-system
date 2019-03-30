@@ -381,12 +381,13 @@
       status = #{status,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getInfoTimeDESC" parameterType="java.lang.Integer">
+  <select id="getRecruitListDESC" parameterType="java.util.Map" resultType="com.zxm.graduatemanagesystem.model.RecruitInfo">
     select
     <include refid="Base_Column_List" />
     from recruit_info
-    <if test="author_id != null">
-      where author_id = #{author_id}
+    where 1 = 1
+    <if test="authorId != null">
+      and author_id = #{authorId, jdbcType = INTEGER}
     </if>
     order by create_date desc
   </select>

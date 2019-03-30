@@ -4,6 +4,7 @@ import com.zxm.graduatemanagesystem.dao.UserDao;
 import com.zxm.graduatemanagesystem.dao.mapper.UserMapper;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.model.UserCriteria;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * Create by zhouximin
  * Description:
  */
+@Component
 public class UserDaoImpl implements UserDao {
     @Resource
     private UserMapper userMapper;

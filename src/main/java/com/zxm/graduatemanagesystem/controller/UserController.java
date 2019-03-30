@@ -15,11 +15,6 @@ import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IStudentService;
 import com.zxm.graduatemanagesystem.service.IUserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 2019/3/5
@@ -117,5 +112,10 @@ public class UserController {
             modle.addAttribute("user", user);
         }
         return "password_table";
+    }
+
+    @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
+    public String toRegister(){
+        return "/front/registration";
     }
 }

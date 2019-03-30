@@ -55,4 +55,11 @@ public class RecruitMeetinController {
         model.addAttribute("info",recruitMeeting);
         return "/front/recruit_meeting";
     }
+
+    @RequestMapping(value = "/toList",method = RequestMethod.GET)
+    public String toListPage(Model model, @RequestParam (defaultValue = "1")int pageNum, @RequestParam (defaultValue = "10")int pageSize){
+        PageInfo pageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum,pageSize);
+        model.addAttribute("pageInfo", pageInfo);
+        return "/front/recruit_meeting_list";
+    }
 }

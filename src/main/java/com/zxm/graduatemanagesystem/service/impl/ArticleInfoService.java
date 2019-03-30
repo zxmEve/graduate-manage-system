@@ -52,4 +52,9 @@ public class ArticleInfoService implements IArticleInfoService {
     public int deleteArticleInfo(Integer id) {
         return articleInfoMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public ArticleInfo getDetailById(Integer id) {
+        return articleInfoMapper.selectByPrimaryKey(id);
+    }
 }

@@ -11,4 +11,6 @@ import java.util.List;
  */
 public interface RecruitInfoDao {
     List<RecruitInfo> getRecruitListByAuthorDESC(Integer authorId);
+
+    List<RecruitInfo> getRecruitListDESC();
 }
