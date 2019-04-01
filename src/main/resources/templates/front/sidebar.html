@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="sidebar" class="sidebar">
+    <div class="separator" style="height:15px;"></div>
+    <h3>在校生</h3>
+    <div class="block_accordeon_type_2">
+        <div class="button_outer first">
+            <div class="button_inner">新闻公告</div>
+            <div class="arrow"></div>
+        </div><!-- accordeon trigger -->
+        <div class="accordeon_content">
+            <!-- accordeon content goes here -->
+            <a href=""><p>通知公告</p></a>
+            <p>新闻动态</p>
+        </div>
+
+        <div class="button_outer">
+         <div class="button_inner" href="/recruit/info/toList">招聘信息</div>
+
+        </div><!-- accordeon trigger -->
+
+        <div class="button_outer">
+            <div class="button_inner">宣讲会</div>
+
+        </div><!-- accordeon trigger -->
+        <div class="button_outer">
+            <div class="button_inner">就业政策</div>
+
+        </div><!-- accordeon trigger -->
+
+        <script type="text/javascript">
+            $('.block_accordeon_type_2').tabs('.block_accordeon_type_2 div.accordeon_content', {
+                tabs: '.button_outer',
+                effect: 'slide',
+                currentClose: true,
+                initialIndex: 0
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>

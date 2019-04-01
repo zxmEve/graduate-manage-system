@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>注册</title>
+<title th:text="${info.title}"></title>
 
 <meta name="keywords" content="" />
 <meta name="description" content="" />
@@ -74,97 +74,52 @@
         <!-- HEADER END -->
         
         <!-- CONTENT BEGIN -->
-        <div id="content" class="">
+        <div id="content" class="right_sidebar">
         	<div class="inner">
             	<div class="general_content">
                 	<div class="main_content">
                     	<div class="block_breadcrumbs">
-                        	<div class="text"><p>你在这：</p></div>
+                        	<div class="text"><p>你的位置:</p></div>
                             
                             <ul>
-                            	<li><a href="/index/">主页</a></li>
-                                <li>注册</li>
+                            	<li><a href="/index/">首页</a></li>
+                                <li><a href="/article/toList" th:href="@{/article/toList?(articleType=${info.type})}" th:text="${type}"></a></li>
+                                <li th:text="${info.title}"></li>
                             </ul>
                         </div>
-                        <div class="separator" style="height:28px;"></div>
+                        <div class="separator" style="height:30px;"></div>
                         
-                        <p class="general_title"><span>Join The Conversation</span></p>
-                        <div class="separator" style="height:39px;"></div>
+                        <article class="block_single_news">
+                        	<!--<div class="f_pic"><a href="#"><img src="/front/images/pic_news_post_1.jpg" alt="" /></a></div>-->
+                          <p class="title" th:text = "${info.title}"></p>
+                            <!--<p class="subtitle">Many variations of passages of available, but the majority have suffered alteration in some form. Humour, or randomised words which don't look even slightly believable.</p>-->
+                            
+                            <div class="info">
+                                <div class="date"><p th:text="${info.createTime}">15 July, 2012</p></div>
+                                <div class="author"><p>By: <a href="#">John Doe</a></p></div>
+                                    
+                            	<!--<div class="r_part">-->
+                                	<!--<div class="category"><p><a href="#">Life</a></p></div>-->
+                                    <!--<a href="#" class="views">220</a>-->
+                                    <!--<a href="#" class="comments">25</a>-->
+                                <!--</div>-->
+                            </div>
+                            
+                            <div class="content" >
+                            	<p th:text="${info.content}">There are many variations of passages of available, but the majority have suffered alteration in some form, by injected humour, or <b>randomised words</b> which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't <a href="#" class="lnk_blue"><b>anything embarrassing hidden</b></a> in the middle of text. All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over words, combined with a handful of model sentence structures, to generate which looks reasonable. Theherefore <b>always free from repetition</b>, injected humour words etc.</p>
+                                <!--<blockquote class="full">Going to use a passage you need to be sure there isn't anything embarrassing hidden in the middle of text. established fact that a reader will be distracted by the readable content.</blockquote>-->
+                                <!--<p>Available, but the majority have suffered alteration.By injected humour, or randomised words which don't look even slightly believable. If you are <a href="#"><b>going to use a passage</b></a> of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. Established fact that a reader will be distracted by the readable content of a page when <b>looking at its /front/layout</b>. The point of using Lorem Ipsum is that it has a more-or-less.</p>-->
+                            </div>
+                        </article>
                         
-                        <div class="block_registration">
-                        	<form action="#" class="w_validation" />
-                            	<div class="col_1">
-                                	<div class="label"><p>Login<span>*</span>:</p></div>
-                                    <div class="field"><input type="text" class="req" /></div>
-                                    <div class="clearboth"></div>
-                                    <div class="separator" style="height:14px;"></div>
-                                    
-                                    <div class="label"><p>E-mail<span>*</span>:</p></div>
-                                    <div class="field"><input type="text" class="req" /></div>
-                                    <div class="clearboth"></div>
-                                    <div class="separator" style="height:12px;"></div>
-                                    
-                                    <div class="label"><p>Password<span>*</span>:</p></div>
-                                    <div class="field"><input type="password" class="req" /></div>
-                                    <div class="clearboth"></div>
-                                    <div class="separator" style="height:12px;"></div>
-                                    
-                                    <div class="label"><p>Confirm Password<span>*</span>:</p></div>
-                                    <div class="field"><input type="password" class="req" /></div>
-                                    <div class="clearboth"></div>
-                                </div>
-                                
-                                <div class="col_2">
-                                	<div class="label"><p>Name:</p></div>
-                                    <div class="field"><input type="text" /></div>
-                                    <div class="clearboth"></div>
-                                    <div class="separator" style="height:14px;"></div>
-                                    
-                                    <div class="label"><p>Surname:</p></div>
-                                    <div class="field"><input type="text" /></div>
-                                    <div class="clearboth"></div>
-                                    <div class="separator" style="height:12px;"></div>
-                                    
-                                    <div class="label"><p>Gender:</p></div>
-                                    <div class="checkbox"><input class="sliding_checkbox" type="checkbox" /></div>
-                                    <script type="text/javascript">
-										$(document).ready(function (){
-											$('.sliding_checkbox').iButton({
-												labelOn : 'Female',
-												labelOff : 'Male',
-												resizeHandle : false,
-												resizeContainer : false
-											});
-										});
-									</script>
-                                    <div class="clearboth"></div>
-                                    <div class="separator" style="height:12px;"></div>
-                                    
-                                    <div class="label"><p>Profession:</p></div>
-                                    <div class="select">
-                                    	<select class="custom_select">
-                                        	<option />&nbsp;
-                                            <option />Designer
-                                            <option />Frontend developer
-                                            <option />Manager
-                                        </select>
-                                    </div>
-                                    <div class="clearboth"></div>
-                                </div>
-                                
-                                <div class="clearboth"></div>
-                                <div class="separator" style="height:32px;"></div>
-                                
-                                <p class="info_text">By clicking on the button "Register" you agree to be the terms of service (<a href="#">User Agreement</a>)</p>
-                                <p class="info_text"><input type="submit" class="general_button" value="Register On Site" /></p>
-                                <p class="info_text">You can register for an account through other social networks</p>
-                                <div class="fb_button"><a href="#"><img src="/front/images/button_fb_login.png" alt="" /></a></div>
-                            </form>
-                        </div>
+                        <div class="separator" style="height:4px;"></div>
+
+
                         
-                        <div class="line_3" style="margin:42px 0px 0px;"></div>
-                        
+                        <div class="line_2" style="margin:22px 0px 29px;"></div>
+
                     </div>
+                    <div th:replace="/front/sidebar::sidebar"></div>
                     
                 	<div class="clearboth"></div>
                 </div>

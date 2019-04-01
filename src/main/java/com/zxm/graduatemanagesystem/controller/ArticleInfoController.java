@@ -2,6 +2,7 @@ package com.zxm.graduatemanagesystem.controller;
 
 import javax.annotation.Resource;
 
+import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,14 +55,19 @@ public class ArticleInfoController {
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detail(Model model, @RequestParam Integer id) {
         ArticleInfo articleInfo = articleInfoService.getDetailById(id);
+        String name = ArticalTypeEnum.getDescById(articleInfo.getType());
+        model.addAttribute("type",name);
         model.addAttribute("info", articleInfo);
         return "/front/article";
     }
 
     @RequestMapping(value = "/toList", method = RequestMethod.GET)
-    public String toListPage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize, @RequestParam int articleType) {
+    public String toListPage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize,
+                             @RequestParam(required = true) int articleType) {
         PageInfo pageInfo = articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, articleType);
+        String name = ArticalTypeEnum.getDescById(articleType);
         model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("type",name);
         return "/front/article_list";
     }
 

@@ -16,4 +16,6 @@ public class ArticleListDTO {
     String title;
 
     Date createTime;
+
+    Integer type;
 }

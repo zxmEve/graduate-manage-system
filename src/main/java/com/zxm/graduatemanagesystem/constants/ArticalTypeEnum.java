@@ -20,13 +20,22 @@ public enum ArticalTypeEnum implements BaseEnum{
         this.desc = desc;
     }
 
+    public static String getDescById(int id){
+        for (ArticalTypeEnum articalTypeEnum : ArticalTypeEnum.values()) {
+            if (articalTypeEnum.getIntValue() == id) {
+                return articalTypeEnum.getText();
+            }
+        }
+        return "";
+    }
+
     @Override
     public int getIntValue() {
-        return 0;
+        return id;
     }
 
     @Override
     public String getText() {
-        return null;
+        return desc;
     }
 }

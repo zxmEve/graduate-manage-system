@@ -42,8 +42,8 @@ public class ArticleInfoService implements IArticleInfoService {
 
     @Override
     public PageInfo getArticleInfoListByTypeDESC(int pageNum, int pageSize, Integer type) {
-        List<ArticleInfo> list = articleInfoMapper.getArticleListByTypeDESC(type);
         PageHelper.startPage(pageNum, pageSize);
+        List<ArticleInfo> list = articleInfoMapper.getArticleListByTypeDESC(type);
         PageInfo pageInfo = new PageInfo<>(list);
         return pageInfo;
     }

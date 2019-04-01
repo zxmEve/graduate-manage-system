@@ -86,18 +86,17 @@
 
                         <ul>
                             <li><a href="/index/">首页</a></li>
-                            <li>宣讲会列表</li>
+                            <li>招聘信息列表</li>
                         </ul>
                     </div>
 
                     <div class="separator" style="height:17px;"></div>
-                    <h3>宣讲会信息</h3>
+                    <h3>招聘信息</h3>
                     <div class="recruite_meeting_info">
 
                         <table cellpadding="0" cellspacing="0" class="table_2">
                             <tr>
                                 <th>标题</th>
-                                <th>地点</th>
                                 <th>时间</th>
                             </tr>
 
@@ -105,8 +104,7 @@
                                 <td >
                                     <a th:href="@{/recruit/meeting/detail?(id=${item.id})}" th:text="${item.title}"></a>
                                 </td>
-                                <td th:text="${item.address}"></td>
-                                <td th:text="${item.startTime}"></td>
+                                <td th:text="${item.createDate}"></td>
                             </tr>
                         </table>
 
