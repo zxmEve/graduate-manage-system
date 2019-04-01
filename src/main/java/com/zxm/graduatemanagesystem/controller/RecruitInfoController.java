@@ -2,7 +2,6 @@ package com.zxm.graduatemanagesystem.controller;
 
 import javax.annotation.Resource;
 
-import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +14,7 @@ import com.zxm.graduatemanagesystem.model.RecruitInfo;
 import com.zxm.graduatemanagesystem.service.impl.RecruitInfoService;
 
 /**
- * @author tangmingqiu
+ * @author zhouximin
  * Created on 2019-03-10
  */
 

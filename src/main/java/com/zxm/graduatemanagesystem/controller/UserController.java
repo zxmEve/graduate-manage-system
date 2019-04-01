@@ -111,7 +111,7 @@ public class UserController {
         if (user != null) {
             modle.addAttribute("user", user);
         }
-        return "password_table";
+        return "/admin/password_table";
     }
 
     @RequestMapping(value = "/toRegister", method = RequestMethod.GET)

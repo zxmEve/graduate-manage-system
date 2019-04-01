@@ -14,7 +14,7 @@ import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.service.impl.RecruitMeetingService;
 
 /**
- * @author tangmingqiu
+ * @author zhouximin
  * Created on 2019-03-10
  */
 
