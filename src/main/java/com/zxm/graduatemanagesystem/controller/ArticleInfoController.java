@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
+import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
 import com.zxm.graduatemanagesystem.model.ArticleInfo;
 import com.zxm.graduatemanagesystem.service.impl.ArticleInfoService;
 
 /**
- * @author tangmingqiu
+ * @author zhouximin
  * Created on 2019-03-10
  */
 
@@ -63,6 +64,12 @@ public class ArticleInfoController {
         PageInfo pageInfo = articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, articleType);
         model.addAttribute("pageInfo", pageInfo);
         return "/front/article_list";
+    }
+
+    @RequestMapping(value = "/toPublishArticle", method = RequestMethod.GET)
+    public String toPublishArticle(Model modle) {
+        modle.addAttribute("articleTypes", ArticalTypeEnum.values());
+        return "/admin/publish_article";
     }
 
 }

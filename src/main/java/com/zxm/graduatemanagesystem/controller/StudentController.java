@@ -1,5 +1,7 @@
 package com.zxm.graduatemanagesystem.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.zxm.graduatemanagesystem.constants.InstitudeEnum;
+import com.zxm.graduatemanagesystem.constants.ProfessionEnum;
 import com.zxm.graduatemanagesystem.model.StudentInfo;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IDictionaryService;
 import com.zxm.graduatemanagesystem.service.impl.StudentService;
 
 /**
- * @author tangmingqiu
+ * @author zhouximin
  * Created on 2019-03-10
  */
 
@@ -75,9 +79,11 @@ public class StudentController {
             StudentInfo stu = studentService.getStudentByUserId(user.getId());
             if (stu != null) {
                 modle.addAttribute("stu", stu);
+                modle.addAttribute("institudes", InstitudeEnum.values());
+                modle.addAttribute("professions", ProfessionEnum.getProFessionsByInstitude(stu.getInstitude()));
             }
         }
-        return "student_info";
+        return "/admin/student_info";
     }
 
     @ResponseBody
@@ -96,6 +102,13 @@ public class StudentController {
 
         int flag = studentService.updateStudent(studentInfo);
         return flag > 0;
+    }
+
+    // 根据学院id 查找专业列表
+    @ResponseBody
+    @RequestMapping(value = "/professions", method = RequestMethod.GET)
+    public List<ProfessionEnum> getProfessions(int institudeId) {
+        return ProfessionEnum.getProFessionsByInstitude(institudeId);
     }
 
 }

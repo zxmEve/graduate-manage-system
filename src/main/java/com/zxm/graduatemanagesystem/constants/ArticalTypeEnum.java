@@ -1,10 +1,13 @@
 package com.zxm.graduatemanagesystem.constants;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * 2019/3/7
  * Create by zhouximin
  * Description: 文章类型
  */
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ArticalTypeEnum implements BaseEnum{
     NOTICE(1, "通知公告"),
     NEWS(2, "新闻动态"),
@@ -18,6 +21,14 @@ public enum ArticalTypeEnum implements BaseEnum{
     ArticalTypeEnum(int id,String desc){
         this.id = id;
         this.desc = desc;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     @Override
