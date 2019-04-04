@@ -62,4 +62,11 @@ public class RecruitMeetinController {
         model.addAttribute("pageInfo", pageInfo);
         return "/front/recruit_meeting_list";
     }
+
+    @RequestMapping(value = "/toMeetingTable")
+    public String toMeetingTable(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+        PageInfo pageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum,pageSize);
+        model.addAttribute("pageInfo",pageInfo);
+        return "/admin/recruit_meeting_table";
+    }
 }

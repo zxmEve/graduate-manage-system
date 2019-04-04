@@ -157,7 +157,9 @@
                                 </a>
                                 <span class="recruit_meeting_address" th:text="${info.address}"></span>
                                 <!--<span class="title" th:text="${#dates.format(info.startTime, 'yyyy-MM-dd HH:mm')}"></span>-->
-                                <span class="title" th:text="${info.startTime}"></span>
+                                <span class="title" ><span th:text="${#dates.format(info.startTime,'yyyy-MM-dd HH:mm')}"></span>
+                                <span > - </span>
+                                    <span  th:text="${#dates.format(info.endTime,'HH:mm')}"></span></span>
                             </div>
 
                             <div class="separator" style="height:7px;"></div>
@@ -182,8 +184,7 @@
                             <div class="separator" style="height:7px;"></div>
                             <div class="clearboth"></div>
                         </div>
-                        <div class="separator" style="height:7px;"></div>
-                        <div class="clearboth"></div>
+
                     </div>
                 </div>
             </div>
@@ -259,14 +260,13 @@
                 </div>
 
                 <div class="separator" style="height:31px;"></div>
-                <div class="block_popular_stuff" th:each="info: ${notice.list}">
+                <div class="block_popular_stuff" >
                     <h4 class="info_title">通知公告</h4>
-
-                    <span> <a th:href="@{/article/toList?(articleType=${info.type})}"
+                    <span> <a th:href="@{/article/toList?(articleType=1)}"
                               class="info_more">更多</a></span>
                     <!---->
                     <div class="line_4" style="margin:-4px 0px 18px;"></div>
-                    <div class="tab_content" >
+                    <div class="tab_content"th:each="info: ${notice.list}" >
                         <!-- tab content goes here -->
                         <div class="block_home_news_post">
                             <a href="/recruit/info/detail" class="recruit_meeting_title"
@@ -276,8 +276,6 @@
                         <div class="separator" style="height:7px;"></div>
                         <div class="clearboth"></div>
                     </div>
-
-                    <div class="clearboth"></div>
 
                     <div class="line_2"></div>
                 </div>

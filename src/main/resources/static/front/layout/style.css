@@ -1385,7 +1385,7 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 }
 .block_home_post .w_hover:hover span {display:block;}
 
-.block_home_news_post {margin-bottom:6px; padding-bottom:10px; border-bottom:1px solid #f0f0f0;}
+.block_home_news_post {margin-bottom:6px; padding-bottom:10px; border-bottom:1px solid #f0f0f0; height: 10px;}
 .block_home_news_post p {padding-bottom:0px;}
 .block_home_news_post .info {height:29px;}
 .block_home_news_post .r_part {float:right;}
@@ -1394,15 +1394,15 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 .block_home_news_post .date a {font-size:11px; color:#868686;}
 .block_home_news_post .views {height:29px; line-height:32px; margin-left:7px; padding-left:20px; float:left; display:none; background:url(/front/layout/images/icon_view_1.png) no-repeat 0px 11px; font-size:11px; color:#8a8a8a;}
 .block_home_news_post .comments {height:29px; line-height:32px; margin-left:11px; padding-left:20px; float:left; display:none; background:url(/front/layout/images/icon_comment_1.png) no-repeat 0px 11px; font-size:11px; color:#8a8a8a;}
-.block_home_news_post .title {color:#22647c; line-height:17px;}
+.block_home_news_post .title {color:#22647c; line-height:17px; width: 40%}
 .block_home_news_post .title a {color:#22647c;}
 .block_home_news_post .title a:hover {text-decoration:none;}
 .block_home_news_post:hover .views {display:block;}
 .block_home_news_post:hover .comments {display:block;}
 .block_home_news_post:hover .title a {color:#f24024;}
 .block_home_news_post:hover .recruit_meeting_title {color:#f24024;}
-.block_home_news_post .recruit_meeting_title {color:#22647c; line-height:17px; width:260px;float:left;}
-.block_home_news_post .recruit_meeting_address {color:#22647c; line-height:17px; width:100px;float:left;}
+.block_home_news_post .recruit_meeting_title {color:#22647c; line-height:17px; width:40%;float:left;}
+.block_home_news_post .recruit_meeting_address {color:#22647c; line-height:17px; width:20%;float:left;}
 
 .inner_copyright{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 

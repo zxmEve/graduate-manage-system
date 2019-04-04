@@ -95,7 +95,7 @@
                             <!--<p class="subtitle">Many variations of passages of available, but the majority have suffered alteration in some form. Humour, or randomised words which don't look even slightly believable.</p>-->
                             
                             <div class="info">
-                                <div class="date"><p th:text="${info.createTime}">15 July, 2012</p></div>
+                                <div class="date"><p th:text="${#dates.format(info.createTime,'yyyy-MM-dd HH:mm:ss')}">15 July, 2012</p></div>
                                 <div class="author"><p>By: <a href="#">John Doe</a></p></div>
                                     
                             	<!--<div class="r_part">-->
@@ -106,7 +106,7 @@
                             </div>
                             
                             <div class="content" >
-                            	<p th:text="${info.content}">There are many variations of passages of available, but the majority have suffered alteration in some form, by injected humour, or <b>randomised words</b> which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't <a href="#" class="lnk_blue"><b>anything embarrassing hidden</b></a> in the middle of text. All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over words, combined with a handful of model sentence structures, to generate which looks reasonable. Theherefore <b>always free from repetition</b>, injected humour words etc.</p>
+                            	<p th:utext="${info.content}">There are many variations of passages of available, but the majority have suffered alteration in some form, by injected humour, or <b>randomised words</b> which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't <a href="#" class="lnk_blue"><b>anything embarrassing hidden</b></a> in the middle of text. All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over words, combined with a handful of model sentence structures, to generate which looks reasonable. Theherefore <b>always free from repetition</b>, injected humour words etc.</p>
                                 <!--<blockquote class="full">Going to use a passage you need to be sure there isn't anything embarrassing hidden in the middle of text. established fact that a reader will be distracted by the readable content.</blockquote>-->
                                 <!--<p>Available, but the majority have suffered alteration.By injected humour, or randomised words which don't look even slightly believable. If you are <a href="#"><b>going to use a passage</b></a> of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. Established fact that a reader will be distracted by the readable content of a page when <b>looking at its /front/layout</b>. The point of using Lorem Ipsum is that it has a more-or-less.</p>-->
                             </div>

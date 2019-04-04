@@ -104,7 +104,7 @@
                                 <td >
                                     <a th:href="@{/article/detail?(id=${item.id})}" th:text="${item.title}"></a>
                                 </td>
-                                <td th:text="${item.createTime}"></td>
+                                <td th:text="${#dates.format(item.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                             </tr>
                         </table>
 

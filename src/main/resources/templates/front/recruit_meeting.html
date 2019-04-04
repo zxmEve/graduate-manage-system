@@ -95,7 +95,7 @@
                             <!--<p class="subtitle">Many variations of passages of available, but the majority have suffered alteration in some form. Humour, or randomised words which don't look even slightly believable.</p>-->
                             
                             <div class="info">
-                                <div class="date"><p th:text="${info.createTime}">15 July, 2012</p></div>
+                                <div class="date"><p th:text="${#dates.format(info.createTime,'yyyy-MM-dd HH:mm:ss')}">15 July, 2012</p></div>
                                 <div class="author"><p>By: <a href="#">John Doe</a></p></div>
                                     
                             	<!--<div class="r_part">-->

@@ -66,4 +66,11 @@ public class RecruitInfoController {
         return "/front/recruit_info_list";
     }
 
+    @RequestMapping(value = "/toRecruitInfoTable")
+    public String toRecruitInfoTable(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+        PageInfo pageInfo = recruitInfoService.getRecruitInfoListDESC(pageNum,pageSize);
+        model.addAttribute("pageInfo",pageInfo);
+        return "/admin/recruit_info_table";
+    }
+
 }

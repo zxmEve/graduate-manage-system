@@ -3,17 +3,17 @@ package com.zxm.graduatemanagesystem.controller;
 import javax.annotation.Resource;
 
 import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
+import com.zxm.graduatemanagesystem.constants.StatusEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
 import com.zxm.graduatemanagesystem.model.ArticleInfo;
 import com.zxm.graduatemanagesystem.service.impl.ArticleInfoService;
+
+import java.util.Date;
 
 /**
  * @author zhouximin
@@ -29,7 +29,16 @@ public class ArticleInfoController {
 
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public boolean insertArticle(@RequestBody ArticleInfo articleInfo) {
+    public @ResponseBody
+    boolean insertArticle(ArticleInfo articleInfo) {
+//        ArticleInfo articleInfo = new ArticleInfo();
+//        articleInfo.setContent(content);
+//        articleInfo.setTitle(title);
+//        articleInfo.setType(type.byteValue());
+        articleInfo.setCreateTime(new Date());
+        articleInfo.setStatus((byte)StatusEnum.NORMAL.getIntValue());
+        System.out.println(articleInfo.getContent());
+        System.out.println(articleInfo.getTitle());
         int ret = articleInfoService.insertArticleInfo(articleInfo);
         return ret > 0;
     }
@@ -76,6 +85,14 @@ public class ArticleInfoController {
     public String toPublishArticle(Model modle) {
         modle.addAttribute("articleTypes", ArticalTypeEnum.values());
         return "/admin/publish_article";
+    }
+
+    @RequestMapping(value = "/toArticleTable")
+    public String toRecruitInfoTable(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize, @RequestParam(defaultValue = "1") int type){
+        PageInfo pageInfo = articleInfoService.getArticleInfoListByTypeDESC(pageNum,pageSize,type);
+        model.addAttribute("articleTypes", ArticalTypeEnum.values());
+        model.addAttribute("pageInfo",pageInfo);
+        return "/admin/article_table";
     }
 
 }

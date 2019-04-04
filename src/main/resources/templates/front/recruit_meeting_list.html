@@ -106,7 +106,7 @@
                                     <a th:href="@{/recruit/meeting/detail?(id=${item.id})}" th:text="${item.title}"></a>
                                 </td>
                                 <td th:text="${item.address}"></td>
-                                <td th:text="${item.startTime}"></td>
+                                <td th:text="${#dates.format(item.startTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                             </tr>
                         </table>
 

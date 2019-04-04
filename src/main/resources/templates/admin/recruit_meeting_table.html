@@ -129,13 +129,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each = "user: ${pageInfo.list}">
-                            <td th:text = "${user.id}">
-                            <td th:text = "${user.title}">
-                            <td th:text = "${user.address}">
-                            <td th:text = "${user.startTime}">
-                            <td th:text = "${user.endTime}">
-                            <td th:text = "${user.authorId}">
+                        <tr th:each = "info: ${pageInfo.list}">
+                            <td th:text = "${info.id}">
+                            <td th:text = "${info.title}">
+                            <td th:text = "${info.address}">
+                            <td th:text = "${#dates.format(info.startTime,'yyyy-MM-dd HH:mm')}">
+                            <td th:text = "${#dates.format(info.endTime,'yyyy-MM-dd HH:mm')}">
+                            <td th:text = "${info.authorId}">
                             </td>
                         </tr>
                         </tbody>

@@ -386,7 +386,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
-  <select id="getArticleListByTypeDESC" parameterType="java.lang.Integer" resultMap="ArticleListDTO">
+  <select id="getArticleListByTypeDESC" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     a.id, a.title, a.create_time
     from article_info a
