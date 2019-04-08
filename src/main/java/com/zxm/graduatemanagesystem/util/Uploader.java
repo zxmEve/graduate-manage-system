@@ -258,12 +258,13 @@ public class Uploader {
      * @param path
      * @return
      */
-    private String getPhysicalPath(String path) {
+    public static String getPhysicalPath(String path) {
         /*String servletPath = this.request.getServletPath();
         String realPath = this.request.getSession().getServletContext()
                 .getRealPath(servletPath);
         return new File(realPath).getParent() +"/" +path;*/
-        return this.request.getSession().getServletContext().getRealPath("/") + path;
+        //return this.request.getSession().getServletContext().getRealPath("/") + path;
+        return "/tmp/" + path;
     }
 
     public void setSavePath(String savePath) {
