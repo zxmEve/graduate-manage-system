@@ -527,9 +527,10 @@
                     <div class="separator" style="height:31px;"></div>
                     <div class="block_popular_stuff">
                         <h4>通知公告</h4>
+                        <div th:each ="info: ${notice.list}">
                         <span> <a th:href="@{/article/toList?(articleType=${info.type})}" class="info_more">更多</a></span>
                         <div class="line_4" style="margin:-4px 0px 18px;"></div>
-                        <div class="tab_content" th:each ="info: ${notice.list}">
+                        <div class="tab_content" >
                             <!-- tab content goes here -->
                             <div class="block_home_news_post">
                                 <a href="/recruit/info/detail"class="recruit_meeting_title"  th:href="@{/recruit/info/detail?(id=${info.id})}" th:text = "${info.title}" >
@@ -540,7 +541,7 @@
 
                             <div class="clearboth"></div>
                         </div>
-
+                        </div>
                         <div class="clearboth"></div>
 
                         <div class="line_2"></div>
