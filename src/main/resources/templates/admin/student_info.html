@@ -3,12 +3,12 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/css/WdatePicker.css" />
-    <link rel="stylesheet" type="text/css" href="/css/skin_/table.css" />
-    <link rel="stylesheet" type="text/css" href="/css/jquery.grid.css" />
-    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="/css/jqueryui-style.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/skin_/table.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/jquery.grid.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/jqueryui-style.css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>表格</title>
@@ -41,8 +41,8 @@
                     <div class="input" id="gender">
                         <label for="gender">性别</label>
                         <select name = "gender"">
-                            <option value ="1" th:selected="${stu?.gender == '1'}">男</option>
-                            <option value ="0" th:selected="${stu?.gender == '0'}">女</option>
+                            <option value ="1" th:selected="${stu?.gender == 1}">男</option>
+                            <option value ="0" th:selected="${stu?.gender == 0}">女</option>
                         </select>
                     </div>
 
@@ -51,21 +51,23 @@
                         <span></span>
                         <input type="text" id="nation" name="nation" th:value="${stu?.nation}"/>
                     </div>
-                    <div class="input" id="institude">
+                    <div class="input">
                         <label for="institude">学院</label>
-                        <span></span>
-                        <input type="text" id="institude" name="institude" th:value="${stu?.institude}"/>
+                        <select name = "institude", id="institude">
+                            <option th:each="institude : ${institudes}" th:value ="${institude.instituId}" th:selected="${stu?.institude == institude.instituId}" th:text="${institude.instituName}"></option>
+                        </select>
                     </div>
-                    <div class="input" id="profession">
+                    <div class="input">
                         <label for="profession">专业</label>
-                        <span></span>
-                        <input type="text" id="profession" name="profession" th:value="${stu?.profession}"/>
+                        <select name = "profession", id="profession">
+                            <option th:each="profession : ${professions}" th:value ="${profession.professionId}" th:selected="${stu?.profession == profession.professionId}" th:text="${profession.professionName}"></option>
+                        </select>
                     </div>
                     <div class="input" id="education">
                         <label for="education">学历</label>
                         <select name = "education">
-                            <option value ="1" th:selected="${stu?.education == '1'}">研究生</option>
-                            <option value ="0" th:selected="${stu?.education == '0'}">本科</option>
+                            <option value ="1" th:selected="${stu?.education == 1}">研究生</option>
+                            <option value ="0" th:selected="${stu?.education == 0}">本科</option>
                         </select>
                     </div>
                     <div class="input" id="phone">
@@ -99,14 +101,14 @@
 </body>
 
 
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/global.js"></script>
-<script type="text/javascript" src="/js/jquery.select.js"></script>
-<script type="text/javascript" src="/js/core.js"></script>
-<script type="text/javascript" src="/js/jquery.pagination.js"></script>
-<script type="text/javascript" src="/js/jquery.grid.js"></script>
-<script type="text/javascript" src="/js/WdatePicker.js"></script>
-<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/admin/js/global.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.select.js"></script>
+<script type="text/javascript" src="/admin/js/core.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.grid.js"></script>
+<script type="text/javascript" src="/admin/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/admin/js/jquery-ui.js"></script>
 <script>
 
     $('.submitBtn').on('click',function(){
@@ -137,6 +139,19 @@
         });
         return o;
     };
+
+    $("select#institude").change(function(){
+        $.ajax({
+            url: "/student/professions?institudeId=" + $(this).val(),
+            type: "GET",
+            success:function(result){
+                $("select#profession").empty();
+                $.each(result, function (index, elem) {
+                    $("select#profession").append("<option value='" + elem.professionId + "'>" + elem.professionName + "</option>")
+                })
+            }
+        });
+    });
 
 
 </script>

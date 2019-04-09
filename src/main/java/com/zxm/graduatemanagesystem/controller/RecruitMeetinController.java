@@ -14,7 +14,7 @@ import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.service.impl.RecruitMeetingService;
 
 /**
- * @author tangmingqiu
+ * @author zhouximin
  * Created on 2019-03-10
  */
 
@@ -61,5 +61,12 @@ public class RecruitMeetinController {
         PageInfo pageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum,pageSize);
         model.addAttribute("pageInfo", pageInfo);
         return "/front/recruit_meeting_list";
+    }
+
+    @RequestMapping(value = "/toMeetingTable")
+    public String toMeetingTable(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+        PageInfo pageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum,pageSize);
+        model.addAttribute("pageInfo",pageInfo);
+        return "/admin/recruit_meeting_table";
     }
 }

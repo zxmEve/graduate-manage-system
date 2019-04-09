@@ -407,7 +407,7 @@
     <result column="end_time" property="endTime" jdbcType="VARCHAR" />
   </resultMap>
 
-  <select id="getMeetingOrderByStartTime" resultMap="RecruitMeetingVO">
+  <select id="getMeetingOrderByStartTime" resultMap="BaseResultMap">
     select
     id, title, address, start_time, end_time
     from recruit_meeting

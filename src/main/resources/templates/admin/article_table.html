@@ -67,10 +67,8 @@
                     <div class="kv-item ue-clear">
                         <label>选择类型:</label>
                         <div class="kv-item-content">
-                            <select>
-                                <option>全部</option>
-                                <option>全部</option>
-                                <option>全部</option>
+                            <select name = "articleType", id="articleType">
+                                <option th:each="type : ${articleTypes}" th:value ="${type.id}" th:text="${type.desc}"></option>
                             </select>
                         </div>
                     </div>
@@ -121,25 +119,22 @@
                         <thead class="thead-light">
                         <tr>
                             <th>ID</th>
-                            <th>姓名</th>
-                            <th>学号</th>
-                            <th>学院</th>
-                            <th>专业</th>
-                            <th>班级</th>
-                            <th>性别</th>
-                            <th>电话号码</th>
+                            <th>标题</th>
+                            <th>类型</th>
+                            <th>创建时间</th>
+                            <th>作者</th>
+                            <th>状态</th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each = "user: ${pageInfo.list}">
-                            <td th:text = "${user.id}">
-                            <td th:text = "${user.name}">
-                            <td th:text = "${user.studentId}">
-                            <td th:text = "${user.institude}">
-                            <td th:text = "${user.profession}">
-                            <td th:text = "${user.studentClass}">
-                            <td th:text = "${user.gender}">
-                            <td th:text = "${user.phone}">
+                        <tr th:each = "info: ${pageInfo.list}">
+                            <td th:text = "${info.id}">
+                            <td th:text = "${info.title}">
+                            <td th:text = "${info.type}">
+                            <td th:text = "${#dates.format(info.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                            <td th:text = "${info.authorId}">
+                            <td th:text = "${info.status}">
                             </td>
                         </tr>
                         </tbody>
@@ -153,29 +148,29 @@
                                 一共 <span th:text="${pageInfo.total}"></span> 条记录</div>
                             <ul id="page" class="pagination" >
                                 <li class="page-item">
-                                    <a class="page-link" th:href="@{'/menu/getMenu?pageNum='+${pageInfo.firstPage}}" >首页</a>
+                                    <a class="page-link" th:href="@{'/admin/toArticleTable?type='+${info.type}+'&pageNum='+${pageInfo.firstPage}}" >首页</a>
                                 </li>
                                 <!--上一页-->
                                 <li class="page-item" th:if="${pageInfo.hasPreviousPage}">
-                                    <a class="page-link" th:href="@{'/menu/getMenu?pageNum='+${pageInfo.prePage}}"  >
+                                    <a class="page-link" th:href="@{'/admin/toArticleTable?pageNum='+${pageInfo.prePage}}"  >
                                         <i class="fa fa-angle-left"></i>&nbsp;上一页
                                     </a>
                                 </li>
                                 <!--循环遍历连续显示的页面，若是当前页就高亮显示，并且没有链接-->
                                 <th:block th:each="nav : ${pageInfo.navigatepageNums}" >
                                     <li class="page-item" th:class="${nav==pageInfo.pageNum}?'active':''" >
-                                        <a class="page-link" th:href="@{'/menu/getMenu?pageNum='+${nav}}"
+                                        <a class="page-link" th:href="@{'/admin/toArticleTable?pageNum='+${nav}}"
                                            th:text="${nav}"></a></li>
                                 </th:block>
 
                                 <th:block th:if="${pageInfo.hasNextPage}">
                                     <li class="page-item">
-                                        <a class="page-link" th:href="@{'/menu/getMenu?pageNum='+${pageInfo.nextPage}}" > 下一页&nbsp;<i class="fa fa-angle-right"></i>
+                                        <a class="page-link" th:href="@{'/admin/toArticleTable?type='+${info.type}+'&pageNum='+${pageInfo.nextPage}}" > 下一页&nbsp;<i class="fa fa-angle-right"></i>
                                         </a>
                                     </li>
                                 </th:block>
                                 <li class="page-item">
-                                    <a class="page-link" th:href="@{'/menu/getMenu?pageNum='+${pageInfo.lastPage}}">尾页</a>
+                                    <a class="page-link" th:href="@{'/admin/toArticleTable?pageNum='+${pageInfo.lastPage}}">尾页</a>
                                 </li>
                             </ul>
                         </nav>
@@ -186,13 +181,13 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/global.js"></script>
-<script type="text/javascript" src="/js/jquery.select.js"></script>
-<script type="text/javascript" src="/js/core.js"></script>
-<script type="text/javascript" src="/js/jquery.pagination.js"></script>
-<script type="text/javascript" src="/js/jquery.grid.js"></script>
-<script type="text/javascript" src="/js/WdatePicker.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/admin/js/global.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.select.js"></script>
+<script type="text/javascript" src="/admin/js/core.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.grid.js"></script>
+<script type="text/javascript" src="/admin/js/WdatePicker.js"></script>
 <script type="text/javascript">
 	$('select').select();
 	var head = [{

@@ -83,7 +83,7 @@
                             
                             <ul>
                             	<li><a href="/index/">首页</a></li>
-                                <li><a href="/recruit/meeting/toList">宣讲会列表</a></li>
+                                <li><a href="/recruit/info/toList">招聘信息列表</a></li>
                                 <li th:text="${info.title}"></li>
                             </ul>
                         </div>
@@ -95,7 +95,7 @@
                             <!--<p class="subtitle">Many variations of passages of available, but the majority have suffered alteration in some form. Humour, or randomised words which don't look even slightly believable.</p>-->
                             
                             <div class="info">
-                                <div class="date"><p th:text="${#dates.format(info.createTime,'yyyy-MM-dd HH:mm:ss')}">15 July, 2012</p></div>
+                                <div class="date"><p th:text="${#dates.format(info.createDate,'yyyy-MM-dd')}">15 July, 2012</p></div>
                                 <div class="author"><p>By: <a href="#">John Doe</a></p></div>
                                     
                             	<!--<div class="r_part">-->
@@ -178,6 +178,7 @@
 
 
                     </div>
+
                     <div th:replace="/front/sidebar::sidebar"></div>
                     
                 	<div class="clearboth"></div>

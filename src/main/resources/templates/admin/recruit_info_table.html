@@ -123,7 +123,6 @@
                         <tr>
                             <th>ID</th>
                             <th>标题</th>
-                            <th>招聘类型</th>
                             <th>创建时间</th>
                             <th>截止时间</th>
                             <th>创建人</th>
@@ -131,15 +130,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each = "user: ${pageInfo.list}">
-                            <td th:text = "${user.id}">
-                            <td th:text = "${user.title}">
-                            <td th:text = "${user.employType}">
-                            <td th:text = "${user.institude}">
-                            <td th:text = "${user.profession}">
-                            <td th:text = "${user.studentClass}">
-                            <td th:text = "${user.gender}">
-                            <td th:text = "${user.phone}">
+                        <tr th:each = "info: ${pageInfo.list}">
+                            <td th:text = "${info.id}">
+                            <td th:text = "${info.title}">
+                            <td th:text = "${#dates.format(info.createDate,'yyyy-MM-dd HH:mm:ss')}">
+                            <td th:text = "${info.endDate}">
+                            <td th:text = "${info.authorId}">
+                            <td th:text = "${info.status}">
                             </td>
                         </tr>
                         </tbody>
