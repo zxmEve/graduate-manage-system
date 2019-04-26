@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
 import com.zxm.graduatemanagesystem.constants.StatusEnum;
+import com.zxm.graduatemanagesystem.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.util.Date;
 
 @RequestMapping("/article")
 @Controller
+@SessionAttributes("loginUser")
 public class ArticleInfoController {
 
     @Resource
@@ -30,17 +32,22 @@ public class ArticleInfoController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public @ResponseBody
-    boolean insertArticle(ArticleInfo articleInfo) {
+    String insertArticle(ArticleInfo articleInfo, Model model, @ModelAttribute("loginUser")User user) {
 //        ArticleInfo articleInfo = new ArticleInfo();
 //        articleInfo.setContent(content);
 //        articleInfo.setTitle(title);
 //        articleInfo.setType(type.byteValue());
         articleInfo.setCreateTime(new Date());
         articleInfo.setStatus((byte)StatusEnum.NORMAL.getIntValue());
+        articleInfo.setAuthorId(user.getId());
         System.out.println(articleInfo.getContent());
         System.out.println(articleInfo.getTitle());
         int ret = articleInfoService.insertArticleInfo(articleInfo);
-        return ret > 0;
+        if(ret > 0){
+            return "redirect:/article/toArticleTable?type="+articleInfo.getType();
+        }else{
+            return "error" ;
+        }
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -92,6 +99,7 @@ public class ArticleInfoController {
         PageInfo pageInfo = articleInfoService.getArticleInfoListByTypeDESC(pageNum,pageSize,type);
         model.addAttribute("articleTypes", ArticalTypeEnum.values());
         model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("type",type);
         return "/admin/article_table";
     }
 

@@ -123,8 +123,8 @@
                             <th>ID</th>
                             <th>标题</th>
                             <th>地点</th>
-                            <th>开始时间</th>
-                            <th>结束时间</th>
+                            <!--<th>开始时间</th>-->
+                            <!--<th>结束时间</th>-->
                             <th>发布者</th>
                         </tr>
                         </thead>
@@ -133,8 +133,8 @@
                             <td th:text = "${info.id}">
                             <td th:text = "${info.title}">
                             <td th:text = "${info.address}">
-                            <td th:text = "${#dates.format(info.startTime,'yyyy-MM-dd HH:mm')}">
-                            <td th:text = "${#dates.format(info.endTime,'yyyy-MM-dd HH:mm')}">
+                            <!--<td th:text = "${#dates.format(info.startTime,'yyyy-MM-dd HH:mm')}">-->
+                            <!--<td th:text = "${#dates.format(info.endTime,'yyyy-MM-dd HH:mm')}">-->
                             <td th:text = "${info.authorId}">
                             </td>
                         </tr>

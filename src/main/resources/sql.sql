@@ -148,6 +148,6 @@ CREATE TABLE `recruit_meeting` (
 -- Records of recruit_meeting
 -- ----------------------------
 BEGIN;
-INSERT INTO `recruit_meeting` VALUES (1, 'zhaopingla', 'jshdjawdiwdhdhhhuusjjshjjsjksjjsjjsjjsjjjs', '晚上', '2019-03-24 16:00:01', '2019-03-24 17:00:05', 1, 1, '2019-03-24 16:00:19');
+INSERT INTO `recruit_meeting` VALUES (1, '招聘', 'jshdjawdiwdhdhhhuusjjshjjsjksjjsjjsjjsjjjs', '主校区 学术报告厅', '2019-03-24 16:00:01', '2019-03-24 17:00:05', 1, 1, '2019-03-24 16:00:19');
 INSERT INTO `recruit_meeting` VALUES (2, '启明星招聘哈哈哈', '表货币好久不见', '主校区 J3301', '2019-03-24 18:25:45', '2019-03-24 20:25:51', 1, 1, '2019-03-24 18:26:01');
 COMMIT;

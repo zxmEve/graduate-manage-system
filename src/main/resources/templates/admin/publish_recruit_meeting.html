@@ -8,10 +8,16 @@
     <link rel="stylesheet" type="text/css" href="/admin/css/WdatePicker.css"/>
     <link rel="stylesheet" type="text/css" href="/admin/css/skin_/form.css"/>
     <link href="/admin/umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/admin/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
     <script type="text/javascript" src="/admin/js/jquery.js"></script>
     <script type="text/javascript" src="/admin/js/global.js"></script>
     <script type="text/javascript" src="/admin/js/jquery.select.js"></script>
     <script type="text/javascript" src="/admin/js/WdatePicker.js"></script>
+    <script type="text/javascript" src="/admin/js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/admin/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/admin/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/admin/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 
     <title>基础信息</title>
 </head>
@@ -25,7 +31,7 @@
             <h2 class="subfild">
                 <span>基本信息</span>
             </h2>
-            <form action="/article/insert" method="post" accept-charset="utf-8" >
+            <form action="/recruit/meeting/insert" method="post" accept-charset="utf-8" >
                 <div class="subfild-content base-info">
                     <div class="kv-item ue-clear">
                         <label><span class="impInfo">*</span>文章标题</label>
@@ -34,22 +40,32 @@
                         </div>
                     </div>
 
-                    <div class="kv-item ue-clear">
-                        <label>所在栏目</label>
-                        <div class="kv-item-content">
-                            <select name="type" , id="articleType">
-                                <option th:each="type : ${articleTypes}" th:value="${type.id}"
-                                        th:text="${type.desc}"></option>
-                            </select>
-                        </div>
-                    </div>
+                    <!--<div class="kv-item ue-clear">-->
+                        <!--<label>所在栏目</label>-->
+                        <!--<div class="kv-item-content">-->
+                            <!--<select name="type" , id="articleType">-->
+                                <!--<option th:each="type : ${articleTypes}" th:value="${type.id}"-->
+                                        <!--th:text="${type.desc}"></option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="kv-item ue-clear">
-                        <label><span class="impInfo">*</span>缩略图</label>
-                        <div class="kv-item-content file">
-                            <span class="text"></span>
-                            <input type="file" id="thumbnail"/>
-                            <input type="button" class="button normal long2" value="浏览.."/>
+                        <label><span class="impInfo">*</span>举办地点</label>
+                        <div class="kv-item-content">
+                            <input type="text" id="address" name="address" placeholder="举办地点"/>
+                        </div>
+                    </div>
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>开始时间</label>
+                        <div class="kv-item-content">
+                            <input type="text" id="startTime" class="datetimePicker" name="startTime" placeholder="开始时间" />
+                        </div>
+                    </div>
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>结束时间</label>
+                        <div class="kv-item-content">
+                            <input type="text" id="endTime" name="endTime" class="datetimePicker" placeholder="结束时间" />
                         </div>
                     </div>
                 </div>
@@ -87,31 +103,16 @@
      $('select').select();
      showRemind('input[type=text],textarea','color5');
      UM.getEditor('content');
-
-
-    // $(".submitBtn").click(function(){
-    //     var cotentData = UM.getEditor('content').getContent();
-    //     var thumbnail = UM.getEditor('thumbnail').getContent();
-    //     var title = UM.getEditor('title').getContent();
-    //     var type = UM.getEditor('articleType').getContext();
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/article/insert",
-    //         data: {
-    //             "title": title,
-    //             "content": cotentData,
-    //             // "picPath": thumbnail,
-    //             "type": type
-    //         },
-    //
-    //         async: false,
-    //         error: function(request) {
-    //             alert("Connection error");
-    //         },
-    //         success: function(){
-    //             alert("success");
-    //         }
-    //     });
-    // });
+     $(".datetimePicker").datetimepicker({
+         language:  'zh-CN',
+         weekStart: 1,
+         todayBtn:  1,
+         autoclose: 1,
+         todayHighlight: 1,
+         startView: 2,
+         forceParse: 0,
+         showMeridian: 1,
+         format: "yyyy-mm-dd hh:ii"
+     });
 </script>
 </html>

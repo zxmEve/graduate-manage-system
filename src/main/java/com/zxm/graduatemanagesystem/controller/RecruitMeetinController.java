@@ -2,16 +2,16 @@ package com.zxm.graduatemanagesystem.controller;
 
 import javax.annotation.Resource;
 
+import com.zxm.graduatemanagesystem.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.service.impl.RecruitMeetingService;
+
+import java.util.Date;
 
 /**
  * @author zhouximin
@@ -21,15 +21,19 @@ import com.zxm.graduatemanagesystem.service.impl.RecruitMeetingService;
 
 @RequestMapping("/recruit/meeting")
 @Controller
+@SessionAttributes("loginUser")
 public class RecruitMeetinController {
 
     @Resource
     private RecruitMeetingService recruitMeetingService;
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public boolean insert(@RequestBody RecruitMeeting recruitMeeting){
+    public @ResponseBody boolean insert(RecruitMeeting recruitMeeting,@ModelAttribute("loginUser")User user){
+        recruitMeeting.setCreateTime(new Date());
+        recruitMeeting.setStatus((byte)1);
+        recruitMeeting.setAuthorId(user.getId());
         int flag = recruitMeetingService.insertRecruitMeeting(recruitMeeting);
-       return flag > 0;
+        return flag > 0;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -68,5 +72,10 @@ public class RecruitMeetinController {
         PageInfo pageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum,pageSize);
         model.addAttribute("pageInfo",pageInfo);
         return "/admin/recruit_meeting_table";
+    }
+
+    @RequestMapping(value = "/toPublishRecruitMeeting")
+    public String toPublishRecruitInfo(Model model){
+        return "/admin/publish_recruit_meeting";
     }
 }

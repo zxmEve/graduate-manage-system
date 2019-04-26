@@ -25,7 +25,7 @@
             <h2 class="subfild">
                 <span>基本信息</span>
             </h2>
-            <form action="/article/insert" method="post" accept-charset="utf-8" >
+            <form action="/recruit/info/insert" method="post" accept-charset="utf-8" >
                 <div class="subfild-content base-info">
                     <div class="kv-item ue-clear">
                         <label><span class="impInfo">*</span>文章标题</label>
@@ -33,23 +33,10 @@
                             <input type="text" id="title" name="title" placeholder="文章标题"/>
                         </div>
                     </div>
-
                     <div class="kv-item ue-clear">
-                        <label>所在栏目</label>
+                        <label><span class="impInfo">*</span>截止时间</label>
                         <div class="kv-item-content">
-                            <select name="type" , id="articleType">
-                                <option th:each="type : ${articleTypes}" th:value="${type.id}"
-                                        th:text="${type.desc}"></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="kv-item ue-clear">
-                        <label><span class="impInfo">*</span>缩略图</label>
-                        <div class="kv-item-content file">
-                            <span class="text"></span>
-                            <input type="file" id="thumbnail"/>
-                            <input type="button" class="button normal long2" value="浏览.."/>
+                            <input type="text" id="endDate" name="endDate" placeholder="截止时间" onfocus="WdatePicker()"/>
                         </div>
                     </div>
                 </div>
@@ -87,7 +74,9 @@
      $('select').select();
      showRemind('input[type=text],textarea','color5');
      UM.getEditor('content');
-
+     $(function() {
+         $("#endDate").datepicker();
+     });
 
     // $(".submitBtn").click(function(){
     //     var cotentData = UM.getEditor('content').getContent();

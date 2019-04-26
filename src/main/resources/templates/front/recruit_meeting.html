@@ -15,9 +15,9 @@
 <![endif]-->
 
 <link rel="stylesheet" href="/front/layout/style.css" type="text/css" />
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />
-<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css" />
-<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel="stylesheet" type="text/css" />
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />-->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css" />-->
+<!--<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel="stylesheet" type="text/css" />-->
 
 <script type="text/javascript" src="/front/layout/js/jquery.js"></script>
 
@@ -95,8 +95,11 @@
                             <!--<p class="subtitle">Many variations of passages of available, but the majority have suffered alteration in some form. Humour, or randomised words which don't look even slightly believable.</p>-->
                             
                             <div class="info">
-                                <div class="date"><p th:text="${#dates.format(info.createTime,'yyyy-MM-dd HH:mm:ss')}">15 July, 2012</p></div>
-                                <div class="author"><p>By: <a href="#">John Doe</a></p></div>
+                                <div class="date">发布时间：<p th:text="${#dates.format(info.createTime,'yyyy-MM-dd')}">15 July, 2012</p></div>
+                                <div class="author"><p>作者： <a href="#">John Doe</a></p></div>
+                                <div class="author"><p>开始时间：<span th:text="${#dates.format(info.startTime,'yyyy-MM-dd HH:mm')}">15 July, 2012</span></p></div>
+                                <div class="author"><p>结束时间： <span th:text="${#dates.format(info.endTime,'yyyy-MM-dd HH:mm')}"></span></div>
+                                <div class="author">举办地点：<span th:text="${info.address}"></span></div>
                                     
                             	<!--<div class="r_part">-->
                                 	<!--<div class="category"><p><a href="#">Life</a></p></div>-->

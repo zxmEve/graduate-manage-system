@@ -2,16 +2,16 @@ package com.zxm.graduatemanagesystem.controller;
 
 import javax.annotation.Resource;
 
+import com.zxm.graduatemanagesystem.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.RecruitInfo;
 import com.zxm.graduatemanagesystem.service.impl.RecruitInfoService;
+
+import java.util.Date;
 
 /**
  * @author zhouximin
@@ -21,13 +21,18 @@ import com.zxm.graduatemanagesystem.service.impl.RecruitInfoService;
 
 @RequestMapping("/recruit/info")
 @Controller
+@SessionAttributes("loginUser")
 public class RecruitInfoController {
 
     @Resource
     private RecruitInfoService recruitInfoService;
 
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
-    public boolean insert(@RequestBody RecruitInfo recruitInfo) {
+    public @ResponseBody
+    boolean insert(RecruitInfo recruitInfo ,@ModelAttribute("loginUser")User user) {
+        recruitInfo.setCreateDate(new Date());
+        recruitInfo.setStatus((byte)1);
+        recruitInfo.setAuthorId(user.getId());
         int flag = recruitInfoService.insertRecruitInfo(recruitInfo);
         return flag > 0;
     }
@@ -71,6 +76,11 @@ public class RecruitInfoController {
         PageInfo pageInfo = recruitInfoService.getRecruitInfoListDESC(pageNum,pageSize);
         model.addAttribute("pageInfo",pageInfo);
         return "/admin/recruit_info_table";
+    }
+
+    @RequestMapping(value = "/toPublishRecruitInfo")
+    public String toPublishRecruitInfo(Model model){
+        return "/admin/publish_recruit_info";
     }
 
 }

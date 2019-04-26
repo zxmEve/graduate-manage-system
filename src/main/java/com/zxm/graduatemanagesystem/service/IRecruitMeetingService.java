@@ -2,6 +2,7 @@ package com.zxm.graduatemanagesystem.service;
 
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.RecruitMeeting;
+import com.zxm.graduatemanagesystem.vo.front.RecruitMeetingVO;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public interface IRecruitMeetingService {
     List<RecruitMeeting> getRecruitMeetingList();
 
-    int insertRecruitMeeting(RecruitMeeting recruitMeeting);
+    int insertRecruitMeeting(RecruitMeetingVO recruitMeeting);
 
     int updateRecruitMeeting(RecruitMeeting recruitMeeting);
 

@@ -34,9 +34,11 @@ public class IndexController {
         PageInfo recruitMeetingPageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum, pageSize);
         PageInfo recruitInfoPageInfo = recruitInfoService.getRecruitInfoListDESC(pageNum, pageSize);
         PageInfo notice = articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, ArticalTypeEnum.NOTICE.getIntValue());
+        PageInfo news = articleInfoService.getArticleInfoListByTypeDESC(pageNum,pageSize,ArticalTypeEnum.NEWS.getIntValue());
         model.addAttribute("recruitMeeting", recruitMeetingPageInfo);
         model.addAttribute("recruitInfo", recruitInfoPageInfo);
         model.addAttribute("notice",notice);
+        model.addAttribute("news",news);
         return "/front/index";
     }
 }

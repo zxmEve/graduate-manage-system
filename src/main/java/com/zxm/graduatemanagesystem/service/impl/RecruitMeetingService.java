@@ -3,17 +3,13 @@ package com.zxm.graduatemanagesystem.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.constants.StatusEnum;
-import com.zxm.graduatemanagesystem.dao.mapper.RecruitInfoMapper;
 import com.zxm.graduatemanagesystem.dao.mapper.RecruitMeetingMapper;
 import com.zxm.graduatemanagesystem.model.RecruitMeeting;
 import com.zxm.graduatemanagesystem.service.IRecruitMeetingService;
-import com.zxm.graduatemanagesystem.util.DateUtil;
 import com.zxm.graduatemanagesystem.vo.front.RecruitMeetingVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.ParseException;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +28,8 @@ public class RecruitMeetingService implements IRecruitMeetingService {
     }
 
     @Override
-    public int insertRecruitMeeting(RecruitMeeting recruitMeeting) {
+    public int insertRecruitMeeting(RecruitMeetingVO recruitMeetingVO) {
+        RecruitMeeting recruitMeeting = new RecruitMeeting();
         recruitMeeting.setCreateTime(new Date());
         recruitMeeting.setStatus((byte) StatusEnum.NORMAL.getIntValue());
         return recruitMeetingMapper.insertSelective(recruitMeeting);

@@ -15,9 +15,9 @@
 <![endif]-->
 
 <link rel="stylesheet" href="/front/layout/style.css" type="text/css" />
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />
-<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css" />
-<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel="stylesheet" type="text/css" />
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />-->
+<!--<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css" />-->
+<!--<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel="stylesheet" type="text/css" />-->
 
 <script type="text/javascript" src="/front/layout/js/jquery.js"></script>
 
@@ -95,20 +95,13 @@
                             <!--<p class="subtitle">Many variations of passages of available, but the majority have suffered alteration in some form. Humour, or randomised words which don't look even slightly believable.</p>-->
                             
                             <div class="info">
-                                <div class="date"><p th:text="${#dates.format(info.createDate,'yyyy-MM-dd')}">15 July, 2012</p></div>
-                                <div class="author"><p>By: <a href="#">John Doe</a></p></div>
-                                    
-                            	<!--<div class="r_part">-->
-                                	<!--<div class="category"><p><a href="#">Life</a></p></div>-->
-                                    <!--<a href="#" class="views">220</a>-->
-                                    <!--<a href="#" class="comments">25</a>-->
-                                <!--</div>-->
+                                <div class="date">发布时间：<span th:text="${#dates.format(info.createDate,'yyyy-MM-dd')}">15 July, 2012</span></div>
+                                <div class="author"><p>作者: <a href="#">John Doe</a></p></div>
+                                <div class="author"><p>截止时间： <span th:text="${#dates.format(info.endDate,'yyyy-MM-dd')}"></span></div>
                             </div>
                             
                             <div class="content" >
-                            	<p th:text="${info.content}">There are many variations of passages of available, but the majority have suffered alteration in some form, by injected humour, or <b>randomised words</b> which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't <a href="#" class="lnk_blue"><b>anything embarrassing hidden</b></a> in the middle of text. All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over words, combined with a handful of model sentence structures, to generate which looks reasonable. Theherefore <b>always free from repetition</b>, injected humour words etc.</p>
-                                <!--<blockquote class="full">Going to use a passage you need to be sure there isn't anything embarrassing hidden in the middle of text. established fact that a reader will be distracted by the readable content.</blockquote>-->
-                                <!--<p>Available, but the majority have suffered alteration.By injected humour, or randomised words which don't look even slightly believable. If you are <a href="#"><b>going to use a passage</b></a> of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. Established fact that a reader will be distracted by the readable content of a page when <b>looking at its /front/layout</b>. The point of using Lorem Ipsum is that it has a more-or-less.</p>-->
+                                <p th:text="${info.content}"></p>
                             </div>
                         </article>
                         
@@ -117,65 +110,6 @@
 
                         
                         <div class="line_2" style="margin:22px 0px 29px;"></div>
-                        
-                        <div class="block_related_posts">
-                        	<h3>Related Posts</h3>
-                            
-                            <div class="block_main_news">
-                            	<article class="block_news_post">
-                                    <div class="f_pic"><a href="#" class="general_pic_hover scale_small"><img src="/front/images/pic_main_news_9.jpg" alt="" /></a></div>
-                                  <p class="category"><a href="#">photography</a></p>
-                                    <p class="title"><a href="#">Many desktop publishing packages and web page editors.</a></p>
-                                    <div class="info">
-                                        <div class="date"><p>11 July, 2012</p></div>
-                                        <a href="#" class="views">183</a>
-                                        
-                                        <div class="clearboth"></div>
-                                    </div>
-                                </article>
-                                
-                                <article class="block_news_post">
-                                    <div class="f_pic"><a href="#" class="general_pic_hover scale_small"><img src="/front/images/pic_main_news_4.jpg" alt="" /></a></div>
-                                  <p class="category"><a href="#">sport</a></p>
-                                    <p class="title"><a href="#">Many desktop publishing packages and web page editors.</a></p>
-                                    <div class="info">
-                                        <div class="date"><p>11 July, 2012</p></div>
-                                        <a href="#" class="views">183</a>
-                                        
-                                        <div class="clearboth"></div>
-                                    </div>
-                                </article>
-                                
-                                <article class="block_news_post">
-                                    <div class="f_pic"><a href="#" class="general_pic_hover scale_small"><img src="/front/images/pic_main_news_6.jpg" alt="" /></a></div>
-                                  <p class="category"><a href="#">business</a></p>
-                                    <p class="title"><a href="#">Many desktop publishing packages and web page editors.</a></p>
-                                    <div class="info">
-                                        <div class="date"><p>11 July, 2012</p></div>
-                                        <a href="#" class="views">183</a>
-                                        
-                                        <div class="clearboth"></div>
-                                    </div>
-                                </article>
-                                
-                                <article class="block_news_post">
-                                    <div class="f_pic"><a href="#" class="general_pic_hover scale_small"><img src="/front/images/pic_main_news_13.jpg" alt="" /></a></div>
-                                  <p class="category"><a href="#">video</a></p>
-                                    <p class="title"><a href="#">Many desktop publishing packages and web page editors.</a></p>
-                                    <div class="info">
-                                        <div class="date"><p>11 July, 2012</p></div>
-                                        <a href="#" class="views">183</a>
-                                        
-                                        <div class="clearboth"></div>
-                                    </div>
-                                </article>
-                                
-                            	<div class="clearboth"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="line_2" style="margin:5px 0px 30px;"></div>
-
 
                     </div>
 

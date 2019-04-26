@@ -26,4 +26,6 @@ public class RecruitMeetingVO {
     private String endTime;
 
     private String address;
+
+    private String content;
 }

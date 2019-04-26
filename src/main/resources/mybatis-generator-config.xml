@@ -12,12 +12,6 @@
         另外，如果使用了mybatis-generator-maven-plugin，那么在pom.xml中定义的properties都可以直接在generatorConfig.xml中使用
     <properties resource="" url="" />
      -->
-
-    <!-- 在MBG工作的时候，需要额外加载的依赖包
-       location属性指明加载jar/zip包的全路径
-   <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />
-     -->
-
     <!--
         context:生成一组对象的环境
         id:必选，上下文id，用于在生成错误时提示
@@ -73,18 +67,18 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
-        <!--<table tableName="article_info"  domainObjectName="ArticleInfo" enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="recruit_info"  domainObjectName="RecruitInfo" enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="recruit_meeting"  domainObjectName="RecruitMeeting" enableCountByExample="true" enableDeleteByExample="true"-->
-               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
-            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="article_info"  domainObjectName="ArticleInfo" enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="recruit_info"  domainObjectName="RecruitInfo" enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="recruit_meeting"  domainObjectName="RecruitMeeting" enableCountByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" enableUpdateByExample="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
 
 
 

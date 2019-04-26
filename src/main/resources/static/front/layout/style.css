@@ -1403,6 +1403,8 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 .block_home_news_post:hover .recruit_meeting_title {color:#f24024;}
 .block_home_news_post .recruit_meeting_title {color:#22647c; line-height:17px; width:40%;float:left;}
 .block_home_news_post .recruit_meeting_address {color:#22647c; line-height:17px; width:20%;float:left;}
+.block_home_news_post:hover .article_title {color:#f24024;}
+.block_home_news_post .article_title {color:#22647c; line-height:17px; float:left;}
 
 .inner_copyright{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 
