@@ -4,6 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.zxm.graduatemanagesystem.dao.CompanyInfoDao;
+import com.zxm.graduatemanagesystem.dao.mapper.CompanyInfoMapper;
+import com.zxm.graduatemanagesystem.dao.mapper.StudentInfoMapper;
+import com.zxm.graduatemanagesystem.model.CompanyInfo;
+import com.zxm.graduatemanagesystem.model.StudentInfo;
+import com.zxm.graduatemanagesystem.model.UserCriteria;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -25,6 +31,10 @@ public class UserService implements IUserService {
     private UserMapper userMapper;
     @Resource
     private UserDao userDao;
+    @Resource
+    private StudentInfoMapper studentInfoMapper;
+    @Resource
+    private CompanyInfoDao companyInfoDao;
 
     @Override
     public List<User> getUserList() {
@@ -49,6 +59,27 @@ public class UserService implements IUserService {
     @Override
     public int insertUser(User user) {
         return userMapper.insert(user);
+    }
+
+    @Override
+    public User selectByUsername(String username) {
+        UserCriteria criteria = new UserCriteria();
+        criteria.createCriteria().andUsernameEqualTo(username);
+        User user = null;
+        List<User> list = userMapper.selectByExample(criteria);
+        if(list.size() != 0){
+            user = list.get(0);
+        }
+        return user;
+    }
+
+    @Override
+    public int deleteUser(int id) {
+        CompanyInfo companyInfo = companyInfoDao.getCompanyByUserId(id);
+        StudentInfo studentInfo = studentInfoMapper.getStudentByUserId(id);
+        if(studentInfo != null || companyInfo != null)
+            return -1;
+        return userMapper.deleteByPrimaryKey(id);
     }
 
     @Override

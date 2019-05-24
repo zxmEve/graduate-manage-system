@@ -41,7 +41,7 @@ public class RecruitInfoService implements IRecruitInfoService {
 
     @Override
     public int updateRecruitInfo(RecruitInfo recruitInfo) {
-        return recruitInfoMapper.updateByPrimaryKeyWithBLOBs(recruitInfo);
+        return recruitInfoMapper.updateByPrimaryKeySelective(recruitInfo);
     }
 
     @Override
@@ -59,6 +59,7 @@ public class RecruitInfoService implements IRecruitInfoService {
         Map map = new HashMap();
         PageHelper.startPage(pageNum,pageSize);
         List<RecruitInfo> list = recruitInfoMapper.getRecruitListDESC(map);
+        System.out.println(list.get(0).getTitle());
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }

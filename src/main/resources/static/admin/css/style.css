@@ -142,3 +142,5 @@ textarea{height:80px; background:none;}
 .opt-panel .opt-panel-bc{position:absolute;left:10px;right:10px;bottom:0;height:15px; background:url(../skin_/opt/dcenter.png);}
 .opt-panel .opt-panel-br{position:absolute;right:0;bottom:0;width:10px;height:15px; background:url(../skin_/opt/dright.png);}
 .opt-panel .opt-panel-arrow{position:absolute;width:14px;;height:7px;top:-5px;left:30px; background:url(../skin_/opt/xljt.png);}
+
+.login-box{width: 500px; padding-left: 120px;}

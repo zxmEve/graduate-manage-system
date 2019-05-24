@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.zxm.graduatemanagesystem.constants.UserTypeEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,7 +49,8 @@ public class StudentController {
         return flag > 0;
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
+    @ResponseBody
     public boolean delete(@RequestParam int studentId){
         int flag = studentService.deleteStudent(studentId);
         return flag > 0;
@@ -60,6 +62,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/query",method = RequestMethod.GET)
+    @ResponseBody
     public StudentInfo queryById(@RequestParam int studentId){
         return studentService.getStudentByUserId(studentId);
     }
@@ -72,17 +75,12 @@ public class StudentController {
         return "/admin/student_table";
     }
 
-    @RequestMapping("/toStuInfo")
-    public String toStuInfo(Model modle, HttpServletRequest request){
-        User user = (User) request.getSession().getAttribute("loginUser");
-        if (user != null) {
-            StudentInfo stu = studentService.getStudentByUserId(user.getId());
-            if (stu != null) {
-                modle.addAttribute("stu", stu);
-                modle.addAttribute("institudes", InstitudeEnum.values());
-                modle.addAttribute("professions", ProfessionEnum.getProFessionsByInstitude(stu.getInstitude()));
-            }
-        }
+    @RequestMapping("/toStudentInfo")
+    public String toStudentInfo(Model model,@RequestParam int studentId){
+        StudentInfo studentInfo = studentService.getStudentById(studentId);
+        model.addAttribute("student",studentInfo);
+        model.addAttribute("institudes",InstitudeEnum.values());
+        model.addAttribute("professions",ProfessionEnum.getProFessionsByInstitude(studentInfo.getInstitude()));
         return "/admin/student_info";
     }
 

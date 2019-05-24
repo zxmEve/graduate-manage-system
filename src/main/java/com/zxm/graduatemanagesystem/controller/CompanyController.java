@@ -1,13 +1,12 @@
 package com.zxm.graduatemanagesystem.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import com.zxm.graduatemanagesystem.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.CompanyInfo;
@@ -48,6 +47,24 @@ public class CompanyController {
         return ret > 0;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/update_or_insert",method = RequestMethod.POST)
+    public boolean updateOrInsert(Model modle, HttpServletRequest request, @RequestBody CompanyInfo companyInfo){
+        User user = (User) request.getSession().getAttribute("loginUser");
+        if (user != null) {
+            CompanyInfo company = companyService.getCompanyByUserId(user.getId());
+            if (company == null) {
+                // 公司信息表这个用户的信息为空，表示第一次完善信息
+                companyInfo.setComUserId(user.getId());
+                int ret = companyService.insertCompany(companyInfo);
+                return ret > 0;
+            }
+        }
+
+        int flag = companyService.updateCompany(companyInfo);
+        return flag > 0;
+    }
+
     @RequestMapping(value = "/query",method = RequestMethod.GET)
     public CompanyInfo queryByUserId(@RequestParam int userId){
         return companyService.getCompanyByUserId(userId);
@@ -58,5 +75,12 @@ public class CompanyController {
         PageInfo pageInfo = companyService.getCompanyList(pageNum,pageSize);
         model.addAttribute("pageInfo",pageInfo);
         return "/admin/company_table";
+    }
+
+    @RequestMapping("/toCompanyInfo")
+    public String toCompanyInfo(Model model,@RequestParam int companyId){
+        CompanyInfo companyInfo = companyService.getCompanyById(companyId);
+        model.addAttribute("company",companyInfo);
+        return "/admin/company_info";
     }
 }

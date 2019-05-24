@@ -25,4 +25,8 @@ public interface IUserService {
 
     int insertUser(User user);
 
+    User selectByUsername(String username);
+
+    int deleteUser(int id);
+
 }

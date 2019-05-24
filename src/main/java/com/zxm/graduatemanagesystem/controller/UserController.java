@@ -3,6 +3,10 @@ package com.zxm.graduatemanagesystem.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.zxm.graduatemanagesystem.constants.InstitudeEnum;
+import com.zxm.graduatemanagesystem.constants.ProfessionEnum;
+import com.zxm.graduatemanagesystem.constants.UserTypeEnum;
+import com.zxm.graduatemanagesystem.model.StudentInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +19,7 @@ import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.User;
 import com.zxm.graduatemanagesystem.service.IStudentService;
 import com.zxm.graduatemanagesystem.service.IUserService;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 2019/3/5
@@ -97,12 +102,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
-    public boolean insert(@RequestBody User user){
+    public @ResponseBody
+    ModelAndView insert(User user){
+
         int flag = userService.insertUser(user);
-        if(flag > 0){
-            return true;
+
+        return new ModelAndView("/index") ;
+    }
+
+    @RequestMapping(value = "/judgeUsername",method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean judgeUsername(@RequestParam String username){
+        User user = userService.selectByUsername(username);
+        if (user != null) {
+            return Boolean.FALSE;
         }
-        return false;
+        return Boolean.TRUE;
     }
 
     @RequestMapping(value = "/toUserInfo",method = RequestMethod.GET)
@@ -114,8 +129,61 @@ public class UserController {
         return "/admin/password_table";
     }
 
+    @RequestMapping(value = "/toUserChange",method = RequestMethod.GET)
+    public String changeUser(Model modle,@RequestParam Integer id){
+        User user =userService.selectById(id);
+        if (user != null) {
+            modle.addAttribute("user", user);
+        }
+        return "/admin/password_table";
+    }
+
     @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
     public String toRegister(){
         return "/front/registration";
+    }
+
+    @RequestMapping("/toUpdateInfo")
+    public String toUpdateInfo(Model modle, HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("loginUser");
+        if (user != null) {
+            if(user.getUserType() == UserTypeEnum.STUDENT.getIntValue()) {
+                StudentInfo stu = studentService.getStudentByUserId(user.getId());
+                if (stu != null) {
+                    modle.addAttribute("stu", stu);
+                    modle.addAttribute("institudes", InstitudeEnum.values());
+                    modle.addAttribute("professions", ProfessionEnum.getProFessionsByInstitude(stu.getInstitude()));
+                }
+                return "/admin/student_info";
+            }else if(user.getUserType() == UserTypeEnum.COMPANY.getIntValue()){
+                return "/admin/company_info";
+            }
+        }
+        return "/admin/student_info";
+    }
+
+    @RequestMapping("/toUserTable")
+    public String toTablePage(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
+        PageInfo pageInfo = userService.getUserList(pageNum,pageSize);
+        model.addAttribute("userType",UserTypeEnum.values());
+        model.addAttribute("pageInfo",pageInfo);
+        return "/admin/user_table";
+    }
+
+    @RequestMapping(value = "/query",method = RequestMethod.GET)
+    @ResponseBody
+    public User queryById(@RequestParam int id){
+        return userService.selectById(id);
+    }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
+    public int deleteUser(@RequestParam int id){
+        int res = userService.deleteUser(id);
+        return res;
+    }
+
+    @RequestMapping(value = "/getLoginUser")
+    public User getLoginUser(HttpServletRequest request){
+        return (User)request.getSession().getAttribute("loginUser");
     }
 }

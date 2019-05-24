@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.dao.CompanyInfoDao;
 import com.zxm.graduatemanagesystem.dao.mapper.CompanyInfoMapper;
 import com.zxm.graduatemanagesystem.model.CompanyInfo;
+import com.zxm.graduatemanagesystem.model.CompanyInfoCriteria;
 import com.zxm.graduatemanagesystem.service.ICompanyService;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,6 @@ import java.util.List;
 public class CompanyService implements ICompanyService {
     @Resource
     private CompanyInfoMapper companyInfoMapper;
-    @Resource
-    private CompanyInfoDao companyInfoDao;
     @Override
     public List<CompanyInfo> getCompanyList() {
         return companyInfoMapper.selectByExample(null);
@@ -52,6 +51,20 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public CompanyInfo getCompanyByUserId(Integer userId) {
-        return companyInfoDao.getCompanyByUserId(userId);
+        CompanyInfoCriteria companyInfoCriteria = new CompanyInfoCriteria();
+        companyInfoCriteria.createCriteria().andComUserIdEqualTo(userId);
+        List<CompanyInfo> list = companyInfoMapper.selectByExample(companyInfoCriteria);
+        if(list.size() > 0){
+            return list.get(0);
+        }else {
+            return null;
+        }
     }
+
+    @Override
+    public CompanyInfo getCompanyById(Integer id) {
+        return companyInfoMapper.selectByPrimaryKey(id);
+    }
+
+
 }

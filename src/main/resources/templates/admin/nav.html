@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,42 +19,42 @@
             <i class="sidebar-hide"></i>
             <!-- <h2><a href="javascript:;"><i class="h2-icon" title="切换到树型结构"></i><span>安全管理</span></a></h2> -->
             <ul class="nav">
-                <li class="nav-li current">
+                <li class="nav-li current user-info">
                     <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">用户信息管理</span></a>
                     <ul class="subnav">
-                        <li class="subnav-li current" href="/student/toStudentTable" data-id="1"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">学生信息管理</span></a></li>
+                        <li class="subnav-li student-table current" href="/student/toStudentTable" data-id="1"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">学生信息管理</span></a></li>
                         <li class="subnav-li" href="/company/toCompanyTable" data-id="2"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">公司信息管理</span></a></li>
-                        <li class="subnav-li" href="table.html" data-id="3"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">管理员信息管理</span></a></li>
+                        <li class="subnav-li" href="/user/toUserTable" data-id="3"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">账号管理</span></a></li>
                     </ul>
                 </li>
-                <li class="nav-li" data-id="8" href="/student/toStudentTable">
+                <li class="nav-li article-info"  >
                 	<a href="javascript:" class="ue-clear"><i class="nav-ivon" ></i><span class="nav-text">文章管理</span></a>
                     <ul class="subnav">
                     	<li class="subnav-li" href="/article/toArticleTable" data-id="8"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">文章列表</span></a></li>
                         <li class="subnav-li" href="/article/toPublishArticle" data-id="9"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">发布文章</span></a></li>
                     </ul>
                 </li>
-                <li class="nav-li">
+                <li class="nav-li recruit-meeting">
                 	<a class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">宣讲会管理</span></a>
                     <ul class="subnav">
-                    	<li class="subnav-li" data-id="5" href="/recruit/meeting/toMeetingTable"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">宣讲会列表</span></a></li>
+                    	<li class="subnav-li meeting-table" data-id="5" href="/recruit/meeting/toMeetingTable"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">宣讲会列表</span></a></li>
                         <li class="subnav-li" data-id="6" href="/recruit/meeting/toPublishRecruitMeeting"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">发布宣讲会</span></a></li>
                         <!--<li class="subnav-li" data-id="7"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">类型选择1</span></a></li>-->
                     </ul>
                 </li>
-                <li class="nav-li">
+                <li class="nav-li recruit-info">
                 	<a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">招聘信息管理</span></a>
                     <ul class="subnav">
-                    	<li class="subnav-li" data-id="12"  href="/recruit/info/toRecruitInfoTable"><a href="javascript:" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">招聘信息列表</span></a></li>
+                    	<li class="subnav-li recruit-info-table" data-id="12"  href="/recruit/info/toRecruitInfoTable"><a href="javascript:" class="ue-clear meeting-table"><i class="subnav-icon"></i><span class="subnav-text">招聘信息列表</span></a></li>
                         <li class="subnav-li" data-id="13"  href="/recruit/info/toPublishRecruitInfo"><a href="javascript:" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">发布招聘信息</span></a></li>
                     </ul>
                 </li>
 
-                <li class="nav-li last-nav-li">
+                <li class="nav-li last-nav-li personal">
                     <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">个人中心</span></a>
                     <ul class="subnav">
+                        <li class="subnav-li info-change" href="/student/toStudentInfo" data-id="15"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">信息修改</span></a></li>
                         <li class="subnav-li" href="/user/toUserInfo" data-id="14"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">密码修改</span></a></li>
-                        <li class="subnav-li" href="/student/toStuInfo" data-id="15"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">信息修改</span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -89,46 +89,11 @@
 <script type="text/javascript" src="/admin/js/nav.js"></script>
 <script type="text/javascript" src="/admin/js/Menu.js"></script>
 <script type="text/javascript" src="/admin/js/jquery.ztree.core-3.5.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
 	var menu = new Menu({
 		defaultSelect: $('.nav').find('li[data-id="1"]')	
 	});
-	
-	// 左侧树结构加载
-	var setting = {};
 
-		var zNodes =[
-			{ name:"用户信息管理",
-			   children: [
-				 { name:"学生信息管理",icon:'/img/skin_/leftlist.png'},
-				 { name:"企业信息管理",icon:'/img/skin_/leftlist.png'},
-				 { name:"管理员信息管理",icon:'/img/skin_/leftlist.png'}
-			]},
-			{ name:"文章管理", open:true,
-			   children: [
-				 { name:"文章列表", checked:true,icon:'/img/skin_/leftlist.png'},
-				 { name:"发布文章",icon:'/img/skin_/leftlist.png'}
-			]},
-			{ name:"宣讲会管理",
-			   children: [
-				 { name:"宣讲会列表",icon:'/img/skin_/leftlist.png'},
-				 { name:"发布宣讲会",icon:'/img/skin_/leftlist.png'}
-			]},
-			{ name:"招聘信息管理",
-			   children: [
-				 { name:"招聘信息列表",icon:'/img/skin_/leftlist.png'},
-				 { name:"发布招聘信息",icon:'/img/skin_/leftlist.png'}
-			]},
-            { name:"个人中心",
-                children: [
-                    { name:"信息管理",icon:'/img/skin_/leftlist.png'},
-                    { name:"密码修改",icon:'/img/skin_/leftlist.png'}
-                ]}
-		];
-
-	$.fn.zTree.init($(".tree"), setting, zNodes);
-	
-	
 	$('.sidebar h2').click(function(e) {
         $('.tree-list').toggleClass('outwindow');
 		$('.nav').toggleClass('outwindow');
@@ -140,5 +105,29 @@
 			 $('.more-bab-list').hide();
 		}
     });
+	$(function () {
+        var user = [[${session.loginUser}]];
+
+        if(user.userType == 1){
+            $('.personal').hide();
+            $('.recruit-info').addClass("last-nav-li");
+            $(".student-table").attr("data-id",1);
+        }else if(user.userType == 2){
+            $('.user-info').hide();
+            $('.recruit-info').hide();
+            $('.recruit-meeting').hide();
+            $('.article-info').hide();
+            $('.personal').addClass("current");
+            $('.info-change').attr("href","/student/toStudentInfo?studentId=");
+            $('.info-change').addClass("current");
+        }else if(user.userType == 3){
+            $('.user-info').hide();
+            $('.article-info').hide();
+            $('.recruit-meeting').addClass("current");
+            $('.meeting-table').addClass("current");
+           $('.meeting-table').attr("href","/recruit/meeting/toMeetingTable?authorId="+user.id)
+            $('.recruit-info-table').attr("href","/recruit/info/toRecruitInfoTable?authorId="+user.id);
+        }
+    })
 </script>
 </html>

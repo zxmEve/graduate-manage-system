@@ -180,8 +180,8 @@
     insert into recruit_info (title, employ_type, create_date, 
       end_date, author_id, status, 
       content)
-    values (#{title,jdbcType=VARCHAR}, #{employType,jdbcType=TINYINT}, #{createDate,jdbcType=DATE}, 
-      #{endDate,jdbcType=DATE}, #{authorId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+    values (#{title,jdbcType=VARCHAR}, #{employType,jdbcType=TINYINT}, #{createDate,jdbcType=DATE},
+      #{endDate,jdbcType=DATE}, #{authorId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT},
       #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zxm.graduatemanagesystem.model.RecruitInfo" >
@@ -381,7 +381,7 @@
       status = #{status,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getRecruitListDESC" parameterType="java.util.Map" resultType="com.zxm.graduatemanagesystem.model.RecruitInfo">
+  <select id="getRecruitListDESC" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from recruit_info

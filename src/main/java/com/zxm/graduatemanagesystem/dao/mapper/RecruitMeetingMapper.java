@@ -120,5 +120,5 @@ public interface RecruitMeetingMapper {
      */
     int updateByPrimaryKey(RecruitMeeting record);
 
-    List<RecruitMeetingVO> getMeetingOrderByStartTime();
+    List<RecruitMeetingVO> getMeetingOrderByStartTime(Integer authorId);
 }

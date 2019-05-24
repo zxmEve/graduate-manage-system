@@ -13,6 +13,7 @@ import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.constants.ArticalTypeEnum;
 import com.zxm.graduatemanagesystem.model.ArticleInfo;
 import com.zxm.graduatemanagesystem.service.impl.ArticleInfoService;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
@@ -32,11 +33,8 @@ public class ArticleInfoController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public @ResponseBody
-    String insertArticle(ArticleInfo articleInfo, Model model, @ModelAttribute("loginUser")User user) {
-//        ArticleInfo articleInfo = new ArticleInfo();
-//        articleInfo.setContent(content);
-//        articleInfo.setTitle(title);
-//        articleInfo.setType(type.byteValue());
+    ModelAndView insertArticle(ArticleInfo articleInfo, Model model, @ModelAttribute("loginUser")User user) {
+
         articleInfo.setCreateTime(new Date());
         articleInfo.setStatus((byte)StatusEnum.NORMAL.getIntValue());
         articleInfo.setAuthorId(user.getId());
@@ -44,16 +42,20 @@ public class ArticleInfoController {
         System.out.println(articleInfo.getTitle());
         int ret = articleInfoService.insertArticleInfo(articleInfo);
         if(ret > 0){
-            return "redirect:/article/toArticleTable?type="+articleInfo.getType();
+            return new ModelAndView("/admin/publish_article_success");
         }else{
-            return "error" ;
+            return new ModelAndView("/admin/publish_error");
         }
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public boolean updateArticleInfo(@RequestBody ArticleInfo articleInfo) {
+    public @ResponseBody ModelAndView updateArticleInfo(ArticleInfo articleInfo) {
         int ret = articleInfoService.updateArticleInfo(articleInfo);
-        return ret > 0;
+        if(ret > 0){
+            return new ModelAndView("/admin/publish_article_success");
+        }else{
+            return new ModelAndView("/admin/publish_error");
+        }
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -62,7 +64,8 @@ public class ArticleInfoController {
         return articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, type);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @ResponseBody
     public boolean deleteArticleInfo(@RequestParam("articleId") int articleId) {
         int ret = articleInfoService.deleteArticleInfo(articleId);
         return ret > 0;
@@ -92,6 +95,14 @@ public class ArticleInfoController {
     public String toPublishArticle(Model modle) {
         modle.addAttribute("articleTypes", ArticalTypeEnum.values());
         return "/admin/publish_article";
+    }
+
+    @RequestMapping(value = "/toUpdateArticle",method = RequestMethod.GET)
+    public String toUpdateArticle(Model model, @RequestParam Integer articleId){
+        ArticleInfo articleInfo = articleInfoService.getDetailById(articleId);
+        model.addAttribute("article",articleInfo);
+        model.addAttribute("articleTypes", ArticalTypeEnum.values());
+        return "/admin/update_article";
     }
 
     @RequestMapping(value = "/toArticleTable")

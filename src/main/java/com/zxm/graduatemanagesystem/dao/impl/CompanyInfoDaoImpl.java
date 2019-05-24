@@ -23,6 +23,10 @@ public class CompanyInfoDaoImpl implements CompanyInfoDao {
         CompanyInfoCriteria companyInfoCriteria = new CompanyInfoCriteria();
         companyInfoCriteria.createCriteria().andComUserIdEqualTo(userId);
         List<CompanyInfo> list = companyInfoMapper.selectByExample(companyInfoCriteria);
-        return list.get(0);
+        if(list.size() > 0){
+            return list.get(0);
+        }else {
+            return null;
+        }
     }
 }

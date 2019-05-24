@@ -30,29 +30,18 @@
                         <thead class="thead-light">
                         <tr>
                             <th>ID</th>
-                            <th>姓名</th>
-                            <th>学号</th>
-                            <th>学院</th>
-                            <th>专业</th>
-                            <th>班级</th>
-                            <th>性别</th>
-                            <th>电话号码</th>
+                            <th>用户名</th>
+                            <th>用户类别</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each = "user: ${pageInfo.list}">
                             <td th:text = "${user.id}"></td>
-                            <td th:text = "${user.name}"></td>
-                            <td th:text = "${user.studentId}"></td>
-                            <td th:text = "${user.institude}"></td>
-                            <td th:text = "${user.profession}"></td>
-                            <td th:text = "${user.studentClass}"></td>
-                            <td th:text = "${user.gender}"></td>
-                            <td th:text = "${user.phone}"></td>
+                            <td th:text = "${user.username}"></td>
+                            <td th:text = "${user.userType}"></td>
                             <td >
-                                <a  th:href = "@{'/student/toStudentInfo?studentId='+${user.id}}" > <button id="update"  >编辑</button></a>
-                                <!--data-toggle="modal" data-target="#dialog-form"  th:attr="data-id=${user.id}"onclick="update_click()"-->
+                                <a th:href = "@{'/user/toUserChange?id='+${user.id}}"><button id="update">编辑</button></a>
                                 <button id="delete" th:attr="data-id=${user.id}">删除</button>
                             </td>
                         </tr>
@@ -70,72 +59,23 @@
                             <div class="modal-body"> <p class="validateTips">所有的表单字段都是必填的。</p>
 
                                 <form id="dialogForm">
-                                    <!--<div class="form-group">-->
-                                        <!--<label for="name">绑定的账户</label>-->
-                                        <!--<select type="text" name="userId" id="userId" class="text ui-widget-content ui-corner-all">-->
-                                            <!---->
-                                        <!--</select>-->
-                                    <!--</div>-->
-                                    <!--<div  class="form-group">-->
-                                        <!--<label for="password">登录密码</label>-->
-                                        <!--<input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">-->
-                                    <!--</div>-->
+
                                     <input name="id" hidden/>
                                     <div  class="form-group">
-                                        <label for="name">姓名</label>
-                                        <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+                                        <label for="username">用户名</label>
+                                        <input type="text" name="username" id="username" class="text ui-widget-content ui-corner-all">
                                     </div>
                                     <div  class="form-group">
-                                        <label for="studentId">学号</label>
-                                        <input type="text" name="studentId" id="studentId" value="" class="text ui-widget-content ui-corner-all">
+                                        <label for="password">密码</label>
+                                        <input type="text" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
                                     </div>
                                     <div  class="form-group">
-                                        <label for="xueyuan">学院</label>
-                                        <input type="text" name="xueyuan" id="xueyuan" value="" class="text ui-widget-content ui-corner-all">
-                                    </div>
-                                    <div  class="form-group">
-                                        <label for="zhuanye">专业</label>
-                                        <input type="text" name="zhuanye" id="zhuanye" value="" class="text ui-widget-content ui-corner-all">
-                                    </div>
-                                    <div  class="form-group">
-                                        <label for="banji">班级</label>
-                                        <input type="text" name="banji" id="banji" value="" class="text ui-widget-content ui-corner-all">
-                                    </div>
-                                    <div class="form-group" id="gender">
-                                        <label for="gender">性别</label>
-                                        <select name = "gender" class="form-control">
-                                            <option value ="1" th:selected="${stu?.gender == 1}">男</option>
-                                            <option value ="0" th:selected="${stu?.gender == 0}">女</option>
+                                        <label for="userType">用户类型</label>
+                                        <select name="userType" id="userType" class="text ui-widget-content ui-corner-all">
+                                            <option></option>
                                         </select>
                                     </div>
-                                    <div class="form-group" id="nation">
-                                        <label for="nation">民族</label>
-                                        <span></span>
-                                        <input type="text" id="nation" class="form-control" name="nation" th:value="${stu?.nation}"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="institude">学院</label>
-                                        <select name = "institude" id="institude" class="form-control">
-                                            <option th:each="institude : ${institudes}" th:value ="${institude.instituId}" th:selected="${stu?.institude == institude.instituId}" th:text="${institude.instituName}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="profession">专业</label>
-                                        <select name = "profession" id="profession" class="form-control">
-                                            <option th:each="profession : ${professions}" th:value ="${profession.professionId}" th:selected="${stu?.profession == profession.professionId}" th:text="${profession.professionName}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group" id="education">
-                                        <label for="education">学历</label>
-                                        <select name = "education" class="form-control">
-                                            <option value ="1" th:selected="${stu?.education == 1}">研究生</option>
-                                            <option value ="0" th:selected="${stu?.education == 0}">本科</option>
-                                        </select>
-                                    </div>
-                                    <div  class="form-group">
-                                        <label for="phone">电话</label>
-                                        <input type="text" name="phone" id="phone" value="" class="text ui-widget-content ui-corner-all">
-                                    </div>
+
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -228,12 +168,18 @@
         $('#delete').click(function (e) {
             var id = $(this).data("id");
             $.ajax({
-                url: "/student/delete?studentId=" + id,
+                url: "/user/delete?id=" + id,
                 data: {},
                 dataType: "json",
                 type: "get",
-                success: function (e) {
-                    alert("删除成功！");
+                success: function (data) {
+                    if(data > 0) {
+                        alert("删除成功！");
+                    }else if(data == -1){
+                        alert("此账号已绑定用户，无法删除！");
+                    }else{
+                        alert("删除失败！");
+                    }
                     location.reload();
                 }
             })
@@ -242,18 +188,13 @@
         function update_click() {
             var id = $("#update").data("id");
             $.ajax({
-                url:"/student/query?studentId=" + id,
+                url:"/user/query?id=" + id,
                 data:{},
                 dataType:"json",
                 type:"get",
                 success:function (data) {
                     $("input[name='id']").val(data.id);
-                    $("input[name='name']").val(data.name);
-                    $("input[name='studentId']").val(data.studentId);
-                    $("input[name='zhuanye']").val(data.profession);
-                    $("input[name='xueyuan']").val(data.institude);
-                    $("input[name='banji']").val(data.studentClass);
-                    $("input[name='phone']").val(data.phone);
+                    $("input[name='username']").val(data.username);
                 }
             })
         }

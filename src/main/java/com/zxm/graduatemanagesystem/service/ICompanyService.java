@@ -24,4 +24,6 @@ public interface ICompanyService {
 
     CompanyInfo getCompanyByUserId(Integer userId);
 
+    CompanyInfo getCompanyById(Integer id);
+
 }

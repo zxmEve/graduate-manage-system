@@ -73,8 +73,7 @@
     <!-- HEADER BEGIN -->
     <header th:replace="/front/header::header"></header>
     <!-- HEADER END -->
-    <div class="inner_copyright">Collect from <a href="http://www.cssmoban.com/" target="_blank" title="网站模板">网站模板</a>
-    </div>
+
     <!-- CONTENT BEGIN -->
     <div id="content" class="right_sidebar">
         <div class="inner">
@@ -85,46 +84,47 @@
                             <ul class="slides">
                                 <li>
                                     <div class="slide">
-                                        <img src="/front/images/pic_home_slider_1.jpg" alt=""/>
-                                        <div class="caption">
-                                            <p class="title">Many desktop publishing packages and web page.</p>
-                                            <p>There are many variations of passages of available, but the majority have
-                                                suffered alteration in some form, by injected humour, or randomised.</p>
-                                        </div>
+                                        <img src="/front/images/1.jpg" width="610px" height="292px" alt=""/>
+                                        <!--<div class="caption">-->
+                                            <!--<p class="title">-->
+                                                <!--首届校企俱乐部嘉年华成功举办</p>-->
+                                            <!--<p>12月13、14日，由大学生就业指导中心主办，校企俱乐部联盟承办的华中科技大学"-->
+                                                <!--首届校企俱乐部嘉年华"在韵苑路口、紫菘花坛成功举办，活动现场热闹非凡，吸引了逾千名同学参与。</p>-->
+                                        <!--</div>-->
                                     </div>
                                 </li>
 
                                 <li>
                                     <div class="slide">
-                                        <img src="/front/images/pic_home_slider_2.jpg" alt=""/>
-                                        <div class="caption">
-                                            <p class="title">Many desktop publishing packages.</p>
-                                            <p>There are many variations of passages of available, but the majority have
-                                                suffered alteration in some form, by injected humour, or randomised.</p>
-                                        </div>
+                                        <img src="/front/images/2.jpg"  width="610px" height="292px" alt=""/>
+                                        <!--<div class="caption">-->
+                                            <!--<p class="title">Many desktop publishing packages.</p>-->
+                                            <!--<p>There are many variations of passages of available, but the majority have-->
+                                                <!--suffered alteration in some form, by injected humour, or randomised.</p>-->
+                                        <!--</div>-->
                                     </div>
                                 </li>
 
                                 <li>
                                     <div class="slide">
-                                        <img src="/front/images/pic_home_slider_3.jpg" alt=""/>
-                                        <div class="caption">
-                                            <p class="title">Many desktop publishing packages and web page.</p>
-                                            <p>There are many variations of passages of available, but the majority.</p>
-                                        </div>
+                                        <img src="/front/images/3.jpg"  width="610px" height="292px" alt=""/>
+                                        <!--<div class="caption">-->
+                                            <!--<p class="title">Many desktop publishing packages and web page.</p>-->
+                                            <!--<p>There are many variations of passages of available, but the majority.</p>-->
+                                        <!--</div>-->
                                     </div>
                                 </li>
 
                                 <li>
                                     <div class="slide">
-                                        <img src="/front/images/pic_home_slider_4.jpg" alt=""/>
-                                        <div class="caption">
-                                            <p class="title">Many desktop publishing packages and web page.</p>
-                                            <p>There are many variations of passages of available, but the majority have
-                                                suffered alteration in some form, by injected humour, or randomised, but
-                                                the majority have suffered alteration in some form, by injected humour,
-                                                or randomised.</p>
-                                        </div>
+                                        <img src="/front/images/pic_home_slider_4.jpg"  width="610px" height="292px" alt=""/>
+                                        <!--<div class="caption">-->
+                                            <!--<p class="title">Many desktop publishing packages and web page.</p>-->
+                                            <!--<p>There are many variations of passages of available, but the majority have-->
+                                                <!--suffered alteration in some form, by injected humour, or randomised, but-->
+                                                <!--the majority have suffered alteration in some form, by injected humour,-->
+                                                <!--or randomised.</p>-->
+                                        <!--</div>-->
                                     </div>
                                 </li>
                             </ul>
@@ -153,14 +153,15 @@
                             <!-- tab content goes here -->
                             <div class="block_home_news_post">
                                 <a href="/recruit/meeting/detail" class="recruit_meeting_title"
-                                   th:href="@{/recruit/meeting/detail?(id=${info.id})}" th:text="${info.title}">
+                                   th:href="@{/recruit/meeting/detail?(id=${info.id})}" th:text="${info.title}" th:title="${info.title}">
                                 </a>
-                                <span class="recruit_meeting_address" th:text="${info.address}"></span>
-                                <!--<span class="title" th:text="${#dates.format(info.startTime, 'yyyy-MM-dd HH:mm')}"></span>-->
+                                <span class="recruit_meeting_address" th:text="${info.address}" th:title="${info.title}"></span>
                                 <span class="title" ><span th:text="${#dates.format(info.startTime,'yyyy-MM-dd HH:mm')}"></span>
                                 <span > - </span>
                                     <span  th:text="${#dates.format(info.endTime,'HH:mm')}"></span></span>
                             </div>
+                            <div class="separator" style="height:7px;"></div>
+                            <div class="clearboth"></div>
                         </div>
                         <div class="separator" style="height:27px;"></div>
                         <div class="clearboth"></div>
@@ -174,10 +175,10 @@
                         <div class="tab_content" th:each="info: ${recruitInfo.list}">
                             <!-- tab content goes here -->
                             <div class="block_home_news_post">
-                                <a href="/recruit/info/detail" class="recruit_meeting_title"
-                                   th:href="@{/recruit/info/detail?(id=${info.id})}" th:text="${info.title}">
+                                <a href="/recruit/info/detail" class="recruit_info_title"
+                                   th:href="@{/recruit/info/detail?(id=${info.id})}" th:text="${info.title}" th:title="${info.title}">
                                 </a>
-                                <span class="title" th:text="${info.createDate}"></span>
+                                <span class="title"  th:text="${#dates.format(info.createDate,'yyyy-MM-dd')}"></span>
                             </div>
 
                             <div class="separator" style="height:7px;"></div>
@@ -230,7 +231,7 @@
                         <!-- tab content goes here -->
                         <div class="block_home_news_post">
                             <a href="/recruit/info/detail" class="article_title"
-                               th:href="@{/article/detail?(id=${info.id})}" th:text="${info.title}">
+                               th:href="@{/article/detail?(id=${info.id})}" th:text="${info.title}" th:title="${info.title}">
                             </a>
                         </div>
                         <div class="separator" style="height:7px;"></div>
@@ -243,7 +244,7 @@
                 <div class="separator" style="height:31px;"></div>
 
                 <div class="block_calendar">
-                    <h4>招聘日历</h4>
+                    <h4>日历</h4>
 
                     <div class="calendar" id="calendar_sidebar">
                     </div>
@@ -281,12 +282,12 @@
                         <li><a href="http://www.hbbys.com.cn/" target="_blank">湖北毕业生就业网</a></li>
                         <li><a href="http://www.xsjy.whu.edu.cn/default.html" target="_blank">武汉大学就业信息网</a></li>
                         <li><a href="http://job.hust.edu.cn/" target="_blank">华中科技大学就业信息网</a></li>
+                        <li><a href="http://jy.ctgu.edu.cn/">三峡大学就业信息网</a></li>
                         <li><a href="http://www.jobhb.com/" target="_blank">湖北人才网</a></li>
                         <li><a href="https://www.lagou.com/" target="_blank">拉勾网</a></li>
                         <li><a href="http://campus.chinahr.com/" target="_blank">中华英才网</a></li>
                         <li><a href="https://www.nowcoder.com/" target="_blank">牛客网</a></li>
-                        <li><a href="tabs.html">Tabs</a></li>
-                        <li><a href="video.html">Video</a></li>
+                        <li><a href="http://www.ctgu.edu.cn/">三峡大学官网</a></li>
                     </ul>
 
                 </div>
@@ -316,7 +317,7 @@
         <a href="#" class="close">Close</a>
 
         <div class="content">
-            <div class="title"><p>Enter the site</p></div>
+            <div class="title"><p>登录</p></div>
 
             <div class="form">
                 <form action="/user/login"/>
@@ -326,34 +327,23 @@
                 </div>
 
                 <div class="column">
-                    <p class="label">Password</p>
+                    <p class="label">密码</p>
                     <div class="field"><input type="password" name="password"/></div>
                 </div>
 
                 <div class="column_2">
                     <div class="remember">
-                        <div class="checkbox"><input type="checkbox"/></div>
-                        <div class="remember_label"><p>Remember me</p></div>
+                        <div class="remember_label"><p>忘记密码？请联系管理员</p></div>
                     </div>
                 </div>
 
-                <div class="column_2">
-                    <p class="forgot_pass"><a href="#">Forgot password?</a></p>
-                </div>
-
                 <div class="column button">
-                    <a href="#" class="enter"><input type="submit" class="button" value="登录"/></a>
+                    <a href="#" ><input type="submit" class="button enter" value="登录"/></a>
                 </div>
 
                 <div class="clearboth"></div>
                 </form>
             </div>
-
-            <!--<div class="subtitle"><p>SIGN IN AS A USER</p></div>-->
-
-            <!--<div class="fb_button"><a href="#"><img src="/front/layout/images/button_fb_login.png" alt=""/></a></div>-->
-            <!--<div class="text"><p>Use your account on the social network Facebook, to create a profile on-->
-            <!--BusinessPress</p></div>-->
         </div>
     </div>
 </div>

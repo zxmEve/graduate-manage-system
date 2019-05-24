@@ -2,9 +2,9 @@ package com.zxm.graduatemanagesystem.vo.front;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
 
 /**
  * 2019/3/24
@@ -19,13 +19,17 @@ public class RecruitMeetingVO {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
+    @Getter
     private String startTime;
 
-    @DateTimeFormat(pattern = "HH:mm")
-    @JsonFormat(pattern = "HH:mm", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
+    @Getter
     private String endTime;
 
     private String address;
 
     private String content;
+
+    private int authorId;
 }

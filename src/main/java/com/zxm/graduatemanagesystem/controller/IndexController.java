@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * Description:
  */
 @Controller
-@RequestMapping("/index")
+
 public class IndexController {
     @Resource
     private IRecruitMeetingService recruitMeetingService;
@@ -27,11 +27,12 @@ public class IndexController {
     @Resource
     private IArticleInfoService articleInfoService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String toIndex(Model model){
         int pageNum = 1;
-        int pageSize = 8;
-        PageInfo recruitMeetingPageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum, pageSize);
+        int pageSize = 12;
+        Integer authorId = null;
+        PageInfo recruitMeetingPageInfo = recruitMeetingService.getRecruitMeetingListByTypeDESC(pageNum, pageSize,authorId);
         PageInfo recruitInfoPageInfo = recruitInfoService.getRecruitInfoListDESC(pageNum, pageSize);
         PageInfo notice = articleInfoService.getArticleInfoListByTypeDESC(pageNum, pageSize, ArticalTypeEnum.NOTICE.getIntValue());
         PageInfo news = articleInfoService.getArticleInfoListByTypeDESC(pageNum,pageSize,ArticalTypeEnum.NEWS.getIntValue());

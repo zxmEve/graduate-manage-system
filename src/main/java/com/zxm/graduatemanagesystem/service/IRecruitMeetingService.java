@@ -16,9 +16,9 @@ public interface IRecruitMeetingService {
 
     int insertRecruitMeeting(RecruitMeetingVO recruitMeeting);
 
-    int updateRecruitMeeting(RecruitMeeting recruitMeeting);
+    int updateRecruitMeeting(RecruitMeetingVO recruitMeeting);
 
-    PageInfo getRecruitMeetingListByTypeDESC(int pageNum, int pageSize);
+    PageInfo getRecruitMeetingListByTypeDESC(int pageNum, int pageSize,Integer authorId);
 
     int deleteRecruitMeeting(Integer id);
 

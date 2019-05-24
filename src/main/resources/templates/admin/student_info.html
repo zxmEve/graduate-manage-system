@@ -9,8 +9,10 @@
     <link rel="stylesheet" type="text/css" href="/admin/css/jquery.grid.css" />
     <link rel="stylesheet" type="text/css" href="/admin/css/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="/admin/css/jqueryui-style.css" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="/admin/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>表格</title>
 </head>
 
@@ -18,74 +20,90 @@
 <div id="container">
     <div id="bd">
         <div id="main">
-            <div class="login-box">
-                <div id="logo"></div>
-                <h1></h1>
-                <form id="loginForm" name="loginForm">
-                    <div class="input" id="id" >
-                        <input type="hidden" id="id" name="id" th:value="${stu?.id}"/>
-                    </div>
-                    <div class="input" id="userId" >
-                        <input type="hidden" id="userId" name="userId" th:value="${stu?.userId}"/>
-                    </div>
-                    <div class="input name" id="name" >
-                        <label for="name">姓名</label>
-                        <span></span>
-                        <input type="text" id="name" name="name" th:value="${stu?.name}"/>
-                    </div>
-                    <div class="input" id="idNum">
-                        <label for="idNum">身份证</label>
-                        <span></span>
-                        <input type="text" id="idNum" name="idNum" th:value="${stu?.idNum}"/>
-                    </div>
-                    <div class="input" id="gender">
-                        <label for="gender">性别</label>
-                        <select name = "gender"">
-                            <option value ="1" th:selected="${stu?.gender == 1}">男</option>
-                            <option value ="0" th:selected="${stu?.gender == 0}">女</option>
-                        </select>
-                    </div>
+            <div class="login-box ">
 
-                    <div class="input" id="nation">
-                        <label for="nation">民族</label>
-                        <span></span>
-                        <input type="text" id="nation" name="nation" th:value="${stu?.nation}"/>
-                    </div>
-                    <div class="input">
-                        <label for="institude">学院</label>
-                        <select name = "institude", id="institude">
-                            <option th:each="institude : ${institudes}" th:value ="${institude.instituId}" th:selected="${stu?.institude == institude.instituId}" th:text="${institude.instituName}"></option>
-                        </select>
-                    </div>
-                    <div class="input">
-                        <label for="profession">专业</label>
-                        <select name = "profession", id="profession">
-                            <option th:each="profession : ${professions}" th:value ="${profession.professionId}" th:selected="${stu?.profession == profession.professionId}" th:text="${profession.professionName}"></option>
-                        </select>
-                    </div>
-                    <div class="input" id="education">
-                        <label for="education">学历</label>
-                        <select name = "education">
-                            <option value ="1" th:selected="${stu?.education == 1}">研究生</option>
-                            <option value ="0" th:selected="${stu?.education == 0}">本科</option>
-                        </select>
-                    </div>
-                    <div class="input" id="phone">
-                        <label for="phone">电话</label>
-                        <span></span>
-                        <input type="text" id="phone" name="phone" th:value="${stu?.phone}"/>
-                    </div>
-                    <div class="input" id="studentClass">
-                        <label for="studentClass">班级</label>
-                        <span></span>
-                        <input type="text" id="studentClass" name="studentClass" th:value="${stu?.studentClass}"/>
-                    </div>
-                    <div class="input" id="studentId">
-                        <label for="studentId">学号</label>
-                        <span></span>
-                        <input type="text" id="studentId" name="studentId" th:value="${stu?.studentId}"/>
-                    </div>
+                <h3>修改学生信息</h3>
+                <form id="loginForm" name="loginForm" role="form" class="form-horizontal">
 
+                    <input type="hidden" class="form-control" name="id" th:value="${student.id}"/>
+                    <input type="hidden" id="userId" class="form-control" name="userId" th:value="${student.userId}"/>
+
+                    <div class="form-group name"  >
+                        <label for="name" class="col-sm-3 control-label">姓名</label>
+                        <span></span>
+                        <div class="col-sm-4">
+                        <input type="text" id="name" class="form-control " name="name" th:value="${student.name}"/>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="idNum" class="col-sm-3 control-label">身份证</label>
+                        <span></span>
+                        <div class="col-sm-6">
+                        <input type="text" id="idNum" class="form-control col-sm-6" name="idNum" th:value="${student.idNum}"/>
+                        </div>
+                    </div>
+                    <div class="form-group" id="gender">
+                        <label for="gender" class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-4">
+                        <select name = "gender" class="form-control ">
+                            <option value ="1" th:selected="${student.gender == 1}">男</option>
+                            <option value ="0" th:selected="${student.gender == 0}">女</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="studentId">
+                        <label for="studentId" class="col-sm-3 control-label">学号</label>
+                        <span></span>
+                        <div class="col-sm-6">
+                        <input type="text" class="form-control " id="studentId" name="studentId" th:value="${student.studentId}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="institude" class="col-sm-3 control-label">学院</label>
+                        <div class="col-sm-6">
+                        <select name = "institude" id="institude" class="form-control ">
+                            <option th:each="institude : ${institudes}" th:value ="${institude.instituId}" th:selected="${student.institude == institude.instituId}" th:text="${institude.instituName}"></option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profession" class="col-sm-3 control-label">专业</label>
+                        <div class="col-sm-6">
+                        <select name = "profession" id="profession" class="form-control ">
+                            <option th:each="profession : ${professions}" th:value ="${profession.professionId}" th:selected="${student.profession == profession.professionId}" th:text="${profession.professionName}"></option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentClass" class="col-sm-3 control-label">班级</label>
+                        <span></span>
+                        <div class="col-sm-6">
+                        <input type="text" class="form-control " id="studentClass" name="studentClass" th:value="${student.studentClass}"/>
+                        </div>
+                    </div>
+                    <div class="form-group" id="education">
+                        <label for="education" class="col-sm-3 control-label">学历</label>
+                        <div class="col-sm-4">
+                        <select name = "education" class="form-control ">
+                            <option value ="1" th:selected="${student.education == 1}">研究生</option>
+                            <option value ="0" th:selected="${student.education == 0}">本科</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="nation" class="col-sm-3 control-label">民族</label>
+                        <span></span>
+                        <div class="col-sm-4">
+                        <input type="text" id="nation" class="form-control " name="nation" th:value="${student.nation}"/>
+                        </div>
+                    </div>
+                    <div class="form-group" id="phone">
+                        <label for="phone" class="col-sm-3 control-label">电话</label>
+                        <span></span>
+                        <div class="col-sm-6">
+                        <input type="text" class="form-control " id="phone" name="phone" th:value="${student.phone}"/>
+                        </div>
+                    </div>
                     <div id="btn" class="submitBtn">
                         <input type="button" class="button" value="修改"  />
                     </div>
@@ -109,6 +127,7 @@
 <script type="text/javascript" src="/admin/js/jquery.grid.js"></script>
 <script type="text/javascript" src="/admin/js/WdatePicker.js"></script>
 <script type="text/javascript" src="/admin/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/admin/js/bootstrap.min.js"></script>
 <script>
 
     $('.submitBtn').on('click',function(){
@@ -119,7 +138,7 @@
             contentType:"application/json",
             success:function(){
                 alert("修改成功");
-                location.reload();
+                location.href="/student/toStudentTable";
             }
         });
     });

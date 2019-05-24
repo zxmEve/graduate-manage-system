@@ -42,6 +42,14 @@ public enum InstitudeEnum {
         INSTITUDE_MAP = Arrays.stream(InstitudeEnum.values())
                 .collect(Collectors.toMap(InstitudeEnum::getInstituId, institude -> institude));
     }
+    public static String getDescById(int id){
+        for (InstitudeEnum articalTypeEnum : InstitudeEnum.values()) {
+            if (articalTypeEnum.getInstituId() == id) {
+                return articalTypeEnum.getInstituName();
+            }
+        }
+        return "";
+    }
 
     public static InstitudeEnum ofValue(int id) {
         return INSTITUDE_MAP.getOrDefault(id, InstitudeEnum.JI_SUAN_JI);

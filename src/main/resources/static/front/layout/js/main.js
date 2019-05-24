@@ -482,6 +482,21 @@ function init_pricing_table() {
 	});
 }
 
+function init_navagation() {
+	var urlstr = location.href;
+    var urlstatus=false;
+    $(".main_menu li").each(function () {
+        console.log(urlstr);
+        if ((urlstr ).indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
+            $(this).addClass('current_page_item'); urlstatus = true;
+        } else {
+            $(this).removeClass('current_page_item');
+        }
+    });
+    if (!urlstatus) {$(".main_menu li").eq(0).addClass('current_page_item'); }
+
+}
+
 
 $(document).ready(function() {
 	init_sticky_footer();
@@ -494,6 +509,7 @@ $(document).ready(function() {
 	init_validation();
 	init_message_boxes();
 	init_pricing_table();
+    init_navagation();
 	
 	$('.block_to_top a').click(function(e) {
 		$.scrollTo(0, 500);
@@ -502,6 +518,10 @@ $(document).ready(function() {
 	});
 	
 	$('audio, video').mediaelementplayer();
+    // $('.main_menu').find('li').click(function() {
+    //     // 为当前点击的导航加上高亮，其余的移除高亮
+    //     $(this).addClass('current_page_item').siblings('li').removeClass('current_page_item');
+    // });
 });
 
 $(window).resize(function() {

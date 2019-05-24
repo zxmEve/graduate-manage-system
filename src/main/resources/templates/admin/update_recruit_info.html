@@ -25,18 +25,22 @@
             <h2 class="subfild">
                 <span>基本信息</span>
             </h2>
-            <form action="/recruit/info/insert" method="post" accept-charset="utf-8" >
+            <form action="/recruit/info/update" method="post" accept-charset="utf-8" >
                 <div class="subfild-content base-info">
                     <div class="kv-item ue-clear">
+                        <input th:value = "${recruitInfo.id}" name="id" hidden />
+                        <!--<input th:value = "${#dates.format(recruitInfo.createDate,'yyyy-MM-dd')}" name="createDate" hidden/>-->
+                        <!--<input th:value = "${recruitInfo.status}" name="status" hidden />-->
+                        <!--<input th:value = "${recruitInfo.authorId}" name="authorId" hidden />-->
                         <label><span class="impInfo">*</span>文章标题</label>
                         <div class="kv-item-content">
-                            <input type="text" id="title" name="title" placeholder="文章标题"/>
+                            <input type="text" id="title" name="title" placeholder="文章标题"th:value = "${recruitInfo.title}" />
                         </div>
                     </div>
                     <div class="kv-item ue-clear">
                         <label><span class="impInfo">*</span>截止时间</label>
                         <div class="kv-item-content">
-                            <input type="text" id="endDate" name="endDate" placeholder="截止时间" autocomplete="off" onfocus="WdatePicker()"/>
+                            <input type="text" id="endDate" name="endDate" placeholder="截止时间" autocomplete="off" onfocus="WdatePicker()" th:value = "${#dates.format(recruitInfo.endDate,'yyyy-MM-dd')}"/>
                         </div>
                     </div>
                 </div>
@@ -49,7 +53,7 @@
                     <div class="kv-item ue-clear">
                         <label><span class="impInfo">*</span>文章内容</label>
                         <div class="kv-item-content">
-                        <textarea placeholder="文章内容" name="content" id="content" style="width:800px;height:240px;"></textarea>
+                        <textarea placeholder="文章内容" name="content" id="content" style="width:800px;height:240px;" th:text = "${recruitInfo.content}"></textarea>
                         </div>
 
                     </div>

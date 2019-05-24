@@ -116,17 +116,20 @@
                         <div class="clearboth"></div>
                     </div>
                     <div class="block_pager">
-                        <a href="#" class="prev">Previous</a>
-                        <a href="#" class="next">Next</a>
+                        <th:block th:if="${pageInfo.hasPreviousPage}">
+                            <a th:href="@{'/recruit/meeting/toList?pageNum='+${pageInfo.prePage}}" class="prev">Previous</a>
+                        </th:block>
+                        <th:block th:if="${pageInfo.hasNextPage}">
+                            <a th:href="@{'/recruit/meeting/toList?pageNum='+${pageInfo.nextPage}}" class="next">Next</a>
+                        </th:block>
 
-                        <div class="pages">
-                            <ul>
-                                <li class="current"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
+                        <div class="pages"  >
+                            <ul th:each="nav : ${pageInfo.navigatepageNums}">
+                                <li th:class="${nav==pageInfo.pageNum}?'current':''">
+                                    <a class="page-link" th:href="@{'/recruit/meeting/toList?pageNum='+${nav}}"
+                                       th:text="${nav}">
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 

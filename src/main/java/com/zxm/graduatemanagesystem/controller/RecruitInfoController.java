@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.github.pagehelper.PageInfo;
 import com.zxm.graduatemanagesystem.model.RecruitInfo;
 import com.zxm.graduatemanagesystem.service.impl.RecruitInfoService;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 
@@ -29,31 +30,39 @@ public class RecruitInfoController {
 
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     public @ResponseBody
-    boolean insert(RecruitInfo recruitInfo ,@ModelAttribute("loginUser")User user) {
-        recruitInfo.setCreateDate(new Date());
-        recruitInfo.setStatus((byte)1);
-        recruitInfo.setAuthorId(user.getId());
+    ModelAndView insert(Model model, RecruitInfo recruitInfo) {
+        System.out.println(recruitInfo.getEndDate());
         int flag = recruitInfoService.insertRecruitInfo(recruitInfo);
-        return flag > 0;
+        if( flag > 0) {
+            return new ModelAndView("/admin/publish_success");
+        }else{
+            return new ModelAndView("/admin/publish_error");
+        }
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public boolean update(@RequestBody RecruitInfo recruitInfo){
+    public @ResponseBody ModelAndView update(RecruitInfo recruitInfo){
         int flag = recruitInfoService.updateRecruitInfo(recruitInfo);
-        return flag > 0;
+        if( flag > 0) {
+            return new ModelAndView("/admin/publish_success");
+        }else{
+            return new ModelAndView("/admin/publish_error");
+        }
     }
 
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public PageInfo list(@RequestParam int pageNum, @RequestParam int pageSize,
-                         @RequestParam int authorId){
+                         @RequestParam(required = false) int authorId){
         return recruitInfoService.getRecruitInfoListByAuthorIdDESC(pageNum, pageSize, authorId);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public boolean delete(@RequestParam int recruitId){
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean  delete(@RequestParam int recruitId){
         int flag = recruitInfoService.deleteRecruitInfo(recruitId);
-        return flag > 0;
+        if( flag > 0)return true;
+        return false;
     }
 
 
@@ -72,8 +81,8 @@ public class RecruitInfoController {
     }
 
     @RequestMapping(value = "/toRecruitInfoTable")
-    public String toRecruitInfoTable(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize){
-        PageInfo pageInfo = recruitInfoService.getRecruitInfoListDESC(pageNum,pageSize);
+    public String toRecruitInfoTable(Model model, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "8") int pageSize, @RequestParam Integer authorId){
+        PageInfo pageInfo = recruitInfoService.getRecruitInfoListByAuthorIdDESC(pageNum,pageSize,authorId);
         model.addAttribute("pageInfo",pageInfo);
         return "/admin/recruit_info_table";
     }
@@ -81,6 +90,13 @@ public class RecruitInfoController {
     @RequestMapping(value = "/toPublishRecruitInfo")
     public String toPublishRecruitInfo(Model model){
         return "/admin/publish_recruit_info";
+    }
+
+    @RequestMapping(value = "/toUpdateRecruitInfo")
+    public String toUpdateRecruitInfo(Model model,@RequestParam Integer id){
+        RecruitInfo recruitInfo = recruitInfoService.getDetailById(id);
+        model.addAttribute("recruitInfo",recruitInfo);
+        return "/admin/update_recruit_info";
     }
 
 }

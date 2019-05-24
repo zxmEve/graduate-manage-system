@@ -102,9 +102,9 @@
 
                             <tr th:each="item:${pageInfo.list}">
                                 <td >
-                                    <a th:href="@{/recruit/meeting/detail?(id=${item.id})}" th:text="${item.title}"></a>
+                                    <a th:href="@{/recruit/info/detail?(id=${item.id})}" th:text="${item.title}"></a>
                                 </td>
-                                <td th:text="${item.createDate}"></td>
+                                <td th:text="${#dates.format(item.createDate,'yyyy-MM-dd')}"></td>
                             </tr>
                         </table>
 
@@ -113,18 +113,22 @@
                         <div class="separator" style="height:7px;"></div>
                         <div class="clearboth"></div>
                     </div>
-                    <div class="block_pager">
-                        <a href="#" class="prev">Previous</a>
-                        <a href="#" class="next">Next</a>
 
-                        <div class="pages">
-                            <ul>
-                                <li class="current"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
+                    <div class="block_pager">
+                        <th:block th:if="${pageInfo.hasPreviousPage}">
+                        <a th:href="@{'/recruit/info/toList?pageNum='+${pageInfo.prePage}}" class="prev">Previous</a>
+                        </th:block>
+                        <th:block th:if="${pageInfo.hasNextPage}">
+                            <a th:href="@{'/recruit/info/toList?pageNum='+${pageInfo.nextPage}}" class="next">Next</a>
+                        </th:block>
+
+                        <div class="pages"  >
+                            <ul th:each="nav : ${pageInfo.navigatepageNums}">
+                                <li th:class="${nav==pageInfo.pageNum}?'current':''">
+                                    <a class="page-link" th:href="@{'/recruit/info/toList?pageNum='+${nav}}"
+                                                                                        th:text="${nav}">
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 

@@ -164,7 +164,7 @@ header {}
 #header .top {height:37px; background:url(/front/layout/images/bg_header_section_top.jpg) repeat-x;}
 #header .bottom {height:148px;}
 #header .bottom .inner {height:148px; background:url(/front/layout/images/bg_header.png) no-repeat 230px 0px;}
-#header .section_main_menu {height:43px; background:url(/front/layout/images/bg_main_menu.jpg) repeat-x;}
+.section_main_menu {height:43px; background:url(/front/layout/images/bg_main_menu.jpg) repeat-x;}
 #header .section_big_dropdown {}
 #header .section_big_dropdown .inner {position:relative;}
 #header .section_secondary_menu {height:39px; background:url(/front/layout/images/bg_secondary_menu.gif) repeat-x;}
@@ -975,7 +975,8 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 .block_leave_reply .general_button {padding:0px 9px 4px;}
 .block_leave_reply .errored {border:1px solid #f2d3ce;}
 
-.block_single_news {}
+.block_single_news {
+}
 .block_single_news .f_pic {
 	margin-bottom:19px;
 	padding:1px;
@@ -998,6 +999,8 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 .block_single_news .title a {font-size:16px; color:#1a1a1a; font-weight:bold;}
 .block_single_news .subtitle {padding-bottom:18px; font-family:'Droid Serif', serif; font-size:11px; color:#b3b3b3; font-style:italic;}
 .block_single_news .info {height:32px; margin-bottom:17px; border-top:1px solid #f0f0f0; border-bottom:1px solid #f0f0f0;}
+.recruit_meeting_info{height:60px; margin-bottom:17px; border-top:1px solid #f0f0f0; border-bottom:1px solid #f0f0f0;}
+.recruit_meeting_info p{padding-bottom: 0px;}
 .block_single_news .info p {padding-bottom:0px;}
 .block_single_news .r_part {float:right;}
 .block_single_news .date {height:32px; float:left;}
@@ -1401,10 +1404,12 @@ nav.secondary_menu > ul > li:first-child > a {padding-left:0px;}
 .block_home_news_post:hover .comments {display:block;}
 .block_home_news_post:hover .title a {color:#f24024;}
 .block_home_news_post:hover .recruit_meeting_title {color:#f24024;}
-.block_home_news_post .recruit_meeting_title {color:#22647c; line-height:17px; width:40%;float:left;}
-.block_home_news_post .recruit_meeting_address {color:#22647c; line-height:17px; width:20%;float:left;}
+.block_home_news_post .recruit_meeting_title {color:#22647c; line-height:17px; width:38.4%;float:left; white-space: nowrap;overflow: hidden;margin-right: 12px;}
+.block_home_news_post .recruit_meeting_address {color:#22647c; line-height:17px; width:19%;float:left;margin-right: 12px; white-space: nowrap;overflow: hidden;}
 .block_home_news_post:hover .article_title {color:#f24024;}
-.block_home_news_post .article_title {color:#22647c; line-height:17px; float:left;}
+.block_home_news_post .article_title {color:#22647c; line-height:17px; float:left; white-space: nowrap;overflow: hidden;width: 100%;}
+.block_home_news_post .recruit_info_title {color:#22647c; line-height:17px; width:80%;float:left; white-space: nowrap;overflow: hidden;}
+.block_home_news_post:hover .recruit_info_title {color:#f24024;}
 
 .inner_copyright{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 

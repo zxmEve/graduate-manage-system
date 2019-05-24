@@ -92,53 +92,54 @@
                         <div class="separator" style="height:39px;"></div>
                         
                         <div class="block_registration">
-                        	<form action="/user/insert" class="w_validation" />
+                        	<form action="/user/insert" class="w_validation"  method="post" accept-charset="utf-8"/>
                             	<div class="col_1">
                                 	<div class="label"><p>用户名<span>*</span>:</p></div>
                                     <div class="field"><input type="text" class="req" name="username" /></div>
+                                    <div class="tip"></div>
+
                                     <div class="clearboth"></div>
                                     <div class="separator" style="height:14px;"></div>
 
                                     <div class="label"><p>密码<span>*</span>:</p></div>
                                     <div class="field"><input type="password" class="req" name="password" /></div>
+                                    <div class="tip-password"></div>
                                     <div class="clearboth"></div>
                                     <div class="separator" style="height:12px;"></div>
                                     
-                                    <div class="label"><p>确认密码<span>*</span>:</p></div>
-                                    <div class="field"><input type="password" class="req" /></div>
-                                    <div class="clearboth"></div>
+
                                 </div>
                                 
                                 <div class="col_2">
-                                	<div class="label"><p>姓名:</p></div>
-                                    <div class="field"><input type="text" /></div>
+                                	<div class="label"><p>身份:</p></div>
+                                    <div>
+                                        <select class="field" name = "userType" id="userType"/>
+                                            <option value="2">学生</option>
+                                            <option value="3">用人单位</option>
+                                        </select>
+                                    </div>
                                     <div class="clearboth"></div>
                                     <div class="separator" style="height:14px;"></div>
 
-                                    <div class="label"><p>性别:</p></div>
-                                    <div class="checkbox"><input class="sliding_checkbox" type="checkbox" /></div>
-                                    <script type="text/javascript">
-										$(document).ready(function (){
-											$('.sliding_checkbox').iButton({
-												labelOn : '女',
-												labelOff : '男',
-												resizeHandle : false,
-												resizeContainer : false
-											});
-										});
-									</script>
+                                    <div class="label"><p>确认密码<span>*</span>:</p></div>
+                                    <div class="field"><input type="password" class="req confirm-password" /></div>
+                                    <div class="tip-confirm"></div>
+                                    <div class="clearboth"></div>
+                                    <!--<div class="label"><p>性别:</p></div>-->
+                                    <!--<div class="checkbox"><input class="sliding_checkbox" type="checkbox" /></div>-->
+                                    <!--<script type="text/javascript">-->
+										<!--$(document).ready(function (){-->
+											<!--$('.sliding_checkbox').iButton({-->
+												<!--labelOn : '女',-->
+												<!--labelOff : '男',-->
+												<!--resizeHandle : false,-->
+												<!--resizeContainer : false-->
+											<!--});-->
+										<!--});-->
+									<!--</script>-->
                                     <div class="clearboth"></div>
                                     <div class="separator" style="height:12px;"></div>
-                                    
-                                    <!--<div class="label"><p>Profession:</p></div>-->
-                                    <!--<div class="select">-->
-                                    	<!--<select class="custom_select">-->
-                                        	<!--<option />&nbsp;-->
-                                            <!--<option />Designer-->
-                                            <!--<option />Frontend developer-->
-                                            <!--<option />Manager-->
-                                        <!--</select>-->
-                                    <!--</div>-->
+
                                     <div class="clearboth"></div>
                                 </div>
                                 
@@ -217,5 +218,78 @@
     </div>
     <!-- POPUP END -->
 </body>
+<script>
+
+    $(function(){
+
+        var ok1=false;
+        var ok2=false;
+        var ok3=false;
+        var ok4=false;
+        // 验证用户名
+        $('input[name="username"]').blur(function(){
+            var username = $("input[name='username']").val();
+            if(username == ""){
+                $(".tip").text( "用户名不能为空！") ;
+                ok1 = false;
+                return;
+            }
+            $.ajax({
+                url:"/user/judgeUsername?username="+username,
+                type:"get",
+                data:{},
+                dataType:"json",
+                success:function (data) {
+                    if(!data){
+                        $(".tip").text("用户名不能重复！");
+                        ok1 = false;
+                    }else{
+                        $(".tip").text(" ");
+                        ok1 = true;
+                    }
+                }
+            })
+
+        });
+
+
+        //验证确认密码
+        $('.confirm-password').blur(function(){
+            var password =  $("input[name='password']").val();
+            if($(this).val() == ""){
+                $(".tip-confirm").text("不能为空！");
+                ok2 = false;
+            }else if($(this).val()!=password) {
+                $(".tip-confirm").text("两次输入密码不一致！");
+                ok2 = false;
+            }else {
+                ok2 = true;
+                $(".tip-confirm").text("");
+            }
+        });
+        $('input[name="password"]').blur(function(){
+            if($(this).val()==""){
+                $(".tip-password").text("密码不能为空！");
+                ok3=false;
+            }else{
+                $(".tip-password").text(" ");
+                ok3 = true;
+            }
+
+        });
+
+        //提交按钮,所有验证通过方可提交
+        $('.general_button').click(function(){
+            if(ok1 && ok2 && ok3 ){
+                $('form').submit();
+                alert("注册成功");
+            }else{
+                return false;
+            }
+        });
+
+    });
+
+</script>
 
 </html>
